@@ -2,7 +2,11 @@ source 'http://rubygems.org'
 
 gemspec
 
-gem 'activerecord-mysql2-adapter'
+
+gem "mysql2", "~> 0.3.11"
+
+gem "mysql"
+gem 'immigrant'
 
 group :test do
   gem 'sqlite3'
