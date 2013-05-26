@@ -31,6 +31,7 @@ class Cms::Page < ActiveRecord::Base
   has_many :blocks,
     :autosave   => true,
     :dependent  => :destroy
+  has_one :menu
   
   # -- Callbacks ------------------------------------------------------------
   before_validation :assigns_label,

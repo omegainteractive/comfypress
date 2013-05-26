@@ -5,8 +5,10 @@ gemspec
 
 gem "mysql2", "~> 0.3.11"
 
+gem 'therubyracer'
+gem 'libv8'
+
 gem "mysql"
-gem 'immigrant'
 
 group :test do
   gem 'sqlite3'
