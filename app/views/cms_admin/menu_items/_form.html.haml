@@ -2,8 +2,19 @@
   = render :partial => 'cms_admin/files/index'
 
 = form.text_field :label
+.control-group
+  = form.label :menu_item_type, class: 'control-label'
+  .controls.menu-type-wrapper
+    %div
+      = label_tag 'menu_item_menu_item_type_page', class: 'radio inline' do
+        = radio_button_tag 'menu_item[menu_item_type]', 'page', @menu_item.menu_item_type == 'page'
+        Page
+      = label_tag 'menu_item_menu_item_type_link', class: 'radio inline' do
+        = radio_button_tag 'menu_item[menu_item_type]', 'link', @menu_item.menu_item_type == 'link'
+        link
+= form.text_field :link, data: {change: '.menu-type-wrapper'}
 - if (options = Cms::Page.options_for_select(@site)).present?
-  = form.select :page_id, options, :prompt => "Select page"
+  = form.select :page_id, options, {:prompt => "Select page"}, data: {change: '.menu-type-wrapper'}
   
 .form-actions
   = form.submit t(@menu_item.new_record?? '.create' : '.update'), :class => 'btn btn-primary'

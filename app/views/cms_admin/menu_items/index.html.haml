@@ -7,7 +7,7 @@
 
 %table.table.table-hover.table-bordered
   %tbody.sortable
-    - @menu_items.each do |menu_item|
+    -  @menu_items.try(:each) do |menu_item|
       %tr{:id => dom_id(menu_item)}
         %td
           .icon

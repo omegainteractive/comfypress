@@ -1,5 +1,5 @@
 class Cms::MenuItem < ActiveRecord::Base
-  attr_accessible :label, :link, :menu_id, :page_id, :type
+  attr_accessible :label, :link, :menu_id, :page_id, :menu_item_type
   # -- Relationships --------------------------------------------------------
   belongs_to :menu
   
@@ -8,5 +8,7 @@ class Cms::MenuItem < ActiveRecord::Base
     :presence   => true
   validates :label, 
     :presence   => true
+#  validates :menu_item_type, 
+#    :presence   => true
   
 end

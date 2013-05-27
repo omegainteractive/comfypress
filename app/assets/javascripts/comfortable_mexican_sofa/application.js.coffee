@@ -26,7 +26,7 @@ window.CMS =
     CMS.page_update_publish()
     CMS.categories()
     CMS.uploader()
-
+	CMS.menu_type()
 
 window.CMS.slugify = ->
   slugify = (str) ->
@@ -154,4 +154,16 @@ window.CMS.uploader = ->
       $('.uploaded-files').prepend(files)
       files.map ->
         $(this).fadeIn()
+		
+		
+window.CMS.menu_type = ->
+  $('[data-change]').on 'keyup change', ->
+    active_field = $(@)
+    menu_type_wrapper = $ active_field.data('change')
+    if active_field.is('#menu_item_link') # it's a link
+      menu_type_wrapper.find('#menu_item_type_link').prop 'checked', yes
+      menu_type_wrapper.find('#menu_item_type_page').prop 'checked', no
+    else # it's a page
+      menu_type_wrapper.find('#menu_item_type_page').prop 'checked', yes
+      menu_type_wrapper.find('#menu_item_type_link').prop 'checked', no
   

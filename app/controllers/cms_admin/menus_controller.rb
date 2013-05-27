@@ -19,14 +19,20 @@ class CmsAdmin::MenusController < CmsAdmin::BaseController
     @menu.save!
     flash[:success] = I18n.t('cms.menus.created')
     redirect_to :action => :index
-  rescue ActiveRecord::RecordInvalid
-    logger.detailed_error($!)
-    flash.now[:error] = I18n.t('cms.menus.creation_failure')
-    render :action => :new
+    rescue ActiveRecord::RecordInvalid
+      logger.detailed_error($!)
+      flash.now[:error] = I18n.t('cms.menus.creation_failure')
+      render :action => :new
   end
 
   def update
-
+    @menu.update_attributes!(params[:menu])
+    flash[:success] = I18n.t('cms.menus.updated')
+    redirect_to :action => :index, :id => @menu
+  rescue ActiveRecord::RecordInvalid
+    logger.detailed_error($!)
+    flash.now[:error] = I18n.t('cms.menus.update_failure')
+    render :action => :index
   end
 
   def destroy

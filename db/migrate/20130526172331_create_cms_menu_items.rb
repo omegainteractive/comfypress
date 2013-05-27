@@ -5,7 +5,7 @@ class CreateCmsMenuItems < ActiveRecord::Migration
       t.string :label
       t.integer :page_id
       t.string :link
-      t.string :type
+      t.string :menu_item_type
 
       t.timestamps
     end
