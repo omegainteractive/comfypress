@@ -5,8 +5,6 @@
 - content_for :right_column do
   = render :partial => 'cms_admin/sites/mirrors'
 
-= render :partial => 'cms_admin/categories/index', :object => 'Cms::Snippet'
-
 %table.table.table-hover.table-bordered
   %tbody.sortable
     - @menus.each do |menu|
@@ -19,10 +17,8 @@
         %td.main
           .item-title
             = link_to menu.label, edit_cms_admin_site_menu_path(@site, menu)
-            = render :partial => '/cms_admin/categories/categories', :object => menu
-          .item-meta
-            = menu.identifier
         %td
           .btn-group
             = link_to t('.edit'), edit_cms_admin_site_menu_path(@site, menu), :class => 'btn btn-small'
+            = link_to t('.menu_items'), cms_admin_site_menu_menu_item_path(@site, menu), :class => 'btn btn-small'
             = link_to t('.delete'), cms_admin_site_menu_path(@site, menu), :method => :delete, :data => {:confirm => t('.are_you_sure')}, :class => 'btn btn-small btn-danger'

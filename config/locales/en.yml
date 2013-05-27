@@ -115,6 +115,14 @@ en:
       files: Files
 
     menus:
+      index:
+        title: Menus
+        new_link: Create New Menu
+        select: Select Menu
+        edit: Edit
+        menu_items: Menu Items
+        delete: Delete
+        are_you_sure: Are you sure you want to delete this menu?
       new:
         title: New Menu
       edit:

@@ -1,10 +1,10 @@
-class CmsAdmin::MenusController < CmsAdmin::BaseController
+class CmsAdmin::MenuItemsController < CmsAdmin::BaseController
   before_filter :build_menu, :only => [:new, :create]
   before_filter :load_menu,  :only => [:edit, :update, :destroy]
 
   def index
-    return redirect_to :action => :new if @site.menus.count == 0
-    @menus = @site.menus
+    return redirect_to :action => :new if @site.@menu.menu_items.count == 0
+    @menu_items = @site.@menu.menu_items
   end
 
   def new
@@ -16,12 +16,12 @@ class CmsAdmin::MenusController < CmsAdmin::BaseController
   end
 
   def create
-    @menu.save!
-    flash[:success] = I18n.t('cms.menus.created')
+    @menu_item.save!
+    flash[:success] = I18n.t('cms.menu_items.created')
     redirect_to :action => :index
   rescue ActiveRecord::RecordInvalid
     logger.detailed_error($!)
-    flash.now[:error] = I18n.t('cms.menus.creation_failure')
+    flash.now[:error] = I18n.t('cms.menu_items.creation_failure')
     render :action => :new
   end
 
@@ -30,8 +30,8 @@ class CmsAdmin::MenusController < CmsAdmin::BaseController
   end
 
   def destroy
-    @menu.destroy
-    flash[:success] = I18n.t('cms.menus.deleted')
+    @menu_item.destroy
+    flash[:success] = I18n.t('cms.menu_items.deleted')
     redirect_to :action => :index
   end
 
@@ -39,13 +39,13 @@ class CmsAdmin::MenusController < CmsAdmin::BaseController
 protected
     
       def build_menu
-        @menu= @site.menus.new(params[:menu])
+        @menu_item= @site.@menu,menu_items.new(params[:menu_item])
       end
   
       def load_menu
-          @menu = @site.menus.find(params[:id])
+          @menu_item = @site.@menu.menu_items.find(params[:id])
         rescue ActiveRecord::RecordNotFound
-          flash[:error] = I18n.t('cms.menus.not_found')
+          flash[:error] = I18n.t('cms.menu_items.not_found')
           redirect_to :action => :index
       end
       
