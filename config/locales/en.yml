@@ -79,6 +79,14 @@ en:
       deleted: Menu deleted
       not_found: Menu not found
       
+    menu_items:
+      created: Menu Item created
+      creation_failure: Failed to create menu item
+      updated: Menu Item updated
+      update_failure: Failed to update menu item
+      deleted: Menu Item deleted
+      not_found: Menu Item not found
+      
     snippets:
       created: Snippet created
       creation_failure: Failed to create snippet
@@ -130,6 +138,22 @@ en:
       form:
         create: Create Menu
         update: Update Menu
+
+    menu_items:
+      index:
+        title: Menu Items
+        new_link: Create New Menu Item
+        select: Select Menu Item
+        edit: Edit
+        delete: Delete
+        are_you_sure: Are you sure you want to delete this menu item?
+      new:
+        title: New Menu Item
+      edit:
+        title: Edit Menu Item
+      form:
+        create: Create Menu Item
+        update: Update Menu Item
 
     sites:
       index:

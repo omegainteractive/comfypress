@@ -1,10 +1,11 @@
 class CmsAdmin::MenuItemsController < CmsAdmin::BaseController
-  before_filter :build_menu, :only => [:new, :create]
-  before_filter :load_menu,  :only => [:edit, :update, :destroy]
+  before_filter :load_menu
+  before_filter :build_menu_item, :only => [:new, :create]
+  before_filter :load_menu_item,  :only => [:edit, :update, :destroy]
 
   def index
-    return redirect_to :action => :new if @site.@menu.menu_items.count == 0
-    @menu_items = @site.@menu.menu_items
+    return redirect_to :action => :new if @menu.menu_items.count == 0
+    @menu_items = @menu.menu_items
   end
 
   def new
@@ -37,13 +38,17 @@ class CmsAdmin::MenuItemsController < CmsAdmin::BaseController
 
     
 protected
+
+  def load_menu
+    @menu = @site.menus.find(params[:menu_id]) || session[:menu_id]
+  end
     
-      def build_menu
-        @menu_item= @site.@menu,menu_items.new(params[:menu_item])
+      def build_menu_item
+        @menu_item= @menu.menu_items.new(params[:menu_item])
       end
   
-      def load_menu
-          @menu_item = @site.@menu.menu_items.find(params[:id])
+      def load_menu_item
+          @menu_item = @menu.menu_items.find(params[:id])
         rescue ActiveRecord::RecordNotFound
           flash[:error] = I18n.t('cms.menu_items.not_found')
           redirect_to :action => :index
