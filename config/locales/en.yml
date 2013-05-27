@@ -105,7 +105,14 @@ en:
       pages: Pages
       snippets: Snippets
       files: Files
-      
+
+    menus:
+      new:
+        title: New Menu
+      form:
+        create: Create Menu
+        update: Update Menu
+
     sites:
       index:
         title: Sites

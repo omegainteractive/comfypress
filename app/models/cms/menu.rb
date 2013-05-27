@@ -1,4 +1,5 @@
 class Cms::Menu < ActiveRecord::Base
+  
   attr_accessible :label, :site_id
   
   # -- Relationships --------------------------------------------------------
@@ -12,5 +13,5 @@ class Cms::Menu < ActiveRecord::Base
     :presence   => true
   validates :label, 
     :presence   => true
-  
+    
 end
