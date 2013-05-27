@@ -71,6 +71,14 @@ en:
       not_found: Page not found
       layout_not_found: No Layouts found. Please create one.
       
+    menus:
+      created: Menu created
+      creation_failure: Failed to create menu
+      updated: Menu updated
+      update_failure: Failed to update menu
+      deleted: Menu deleted
+      not_found: Menu not found
+      
     snippets:
       created: Snippet created
       creation_failure: Failed to create snippet
@@ -109,6 +117,8 @@ en:
     menus:
       new:
         title: New Menu
+      edit:
+        title: Edit Menu
       form:
         create: Create Menu
         update: Update Menu
