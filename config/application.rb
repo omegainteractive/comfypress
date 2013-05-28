@@ -12,7 +12,7 @@ end
 module ComfyPress
   class Application < Rails::Application
     
-    require 'comfortable_mexican_sofa'
+    require 'comfypress'
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

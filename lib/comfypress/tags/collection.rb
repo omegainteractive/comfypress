@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::Collection
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::Collection
+  include ComfyPress::Tag
   
   # Here's a full tag signature:
   #   {{ cms:collection:label:collection_class:collection_partial:collection_title:collection_identifier:collection_params }}
