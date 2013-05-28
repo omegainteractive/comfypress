@@ -1,0 +1,5 @@
+- menu_items = Cms::Menu.find(menu_id).menu_items
+
+%ul.menu
+  - menu_items.each do |menu_item|
+    %li= link_to_menu_item(menu_item)
