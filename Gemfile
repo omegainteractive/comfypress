@@ -8,6 +8,8 @@ gem "mysql2", "~> 0.3.11"
 gem 'therubyracer', '~> 0.11.4'
 gem 'libv8'
 
+gem 'seedbank'
+
 gem "mysql"
 
 group :test do
