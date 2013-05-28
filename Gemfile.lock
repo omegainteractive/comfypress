@@ -50,10 +50,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
-<<<<<<< HEAD
-=======
     coderay (1.0.9)
->>>>>>> menus
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -87,23 +84,15 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
-<<<<<<< HEAD
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.4)
-=======
     libv8 (3.11.8.17)
-    mail (2.5.4)
-      mime-types (~> 1.16)
-      treetop (~> 1.4.8)
-    method_source (0.8.1)
-    mime-types (1.23)
-    multi_json (1.7.3)
-    mysql (2.9.1)
+   method_source (0.8.1)
+   mysql (2.9.1)
     mysql2 (0.3.11)
->>>>>>> menus
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -111,13 +100,10 @@ GEM
       cocaine (~> 0.5.0)
       mime-types
     polyglot (0.3.3)
-<<<<<<< HEAD
-=======
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
->>>>>>> menus
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -144,10 +130,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.3.0)
-<<<<<<< HEAD
-=======
     ref (1.0.4)
->>>>>>> menus
     rest-client (1.6.7)
       mime-types (>= 1.16)
     sass (3.2.9)
@@ -155,30 +138,21 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-<<<<<<< HEAD
-=======
     seedbank (0.2.1)
->>>>>>> menus
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-<<<<<<< HEAD
-=======
     slop (3.4.5)
->>>>>>> menus
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
-<<<<<<< HEAD
-=======
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
->>>>>>> menus
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.12)
@@ -192,9 +166,7 @@ PLATFORMS
 DEPENDENCIES
   comfortable_mexican_sofa!
   coveralls
-<<<<<<< HEAD
   sqlite3
-=======
   libv8
   mysql
   mysql2 (~> 0.3.11)
@@ -202,4 +174,3 @@ DEPENDENCIES
   seedbank
   sqlite3
   therubyracer (~> 0.11.4)
->>>>>>> menus
