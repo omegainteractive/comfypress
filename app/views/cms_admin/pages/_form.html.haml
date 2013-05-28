@@ -22,6 +22,9 @@
 - if (options = Cms::Page.options_for_select(@site, @page, nil, 0, false)).present?
   = form.select :target_page_id, [["---- #{t('.select_target_page')} ----", nil]] + options
 
+- if (options = Cms::Menu.options_for_select(@site)).present?
+  = form.select :menu_id, options, {:prompt => "Select menu"}
+   
 = cms_hook :page_form, :object => form
 
 = render :partial => 'cms_admin/categories/form', :object => form

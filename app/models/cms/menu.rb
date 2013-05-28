@@ -14,4 +14,13 @@ class Cms::Menu < ActiveRecord::Base
   validates :label, 
     :presence   => true
     
+  # -- Class Methods --------------------------------------------------------
+    def self.options_for_select(site)
+      out = []
+      site.menus.each do |amenu|
+        out << [ "#{amenu.label}", amenu.id ]
+      end
+      return out.compact
+    end
+    
 end

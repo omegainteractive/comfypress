@@ -9,7 +9,8 @@ class Cms::Site < ActiveRecord::Base
                   :hostname,
                   :path,
                   :locale,
-                  :is_mirrored
+                  :is_mirrored,
+                  :menu_id
   
   # -- Relationships --------------------------------------------------------
   with_options :dependent => :destroy do |site|
