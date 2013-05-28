@@ -9,7 +9,6 @@ pkg
 rdoc
 /tmp
 public/*
-Gemfile.lock
 .rvmrc
 .ruby-version
 /.sass-cache
