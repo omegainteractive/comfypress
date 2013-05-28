@@ -1,3 +1,3 @@
-module ComfortableMexicanSofa
-  VERSION = "1.8.1"
+module ComfyPress
+  VERSION = "0.1.0"
 end
