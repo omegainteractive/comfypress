@@ -21,8 +21,8 @@ module Comfy
       end
       
       def generate_initialization
-        copy_file 'config/initializers/comfortable_mexican_sofa.rb',
-          'config/initializers/comfortable_mexican_sofa.rb'
+        copy_file 'config/initializers/comfypress.rb',
+          'config/initializers/comfypress.rb'
       end
       
       def generate_routing
@@ -38,10 +38,10 @@ module Comfy
       end
       
       def generate_assets
-        directory 'app/assets/javascripts/comfortable_mexican_sofa/admin',
-          'app/assets/javascripts/comfortable_mexican_sofa/admin'
-        directory 'app/assets/stylesheets/comfortable_mexican_sofa/admin',
-          'app/assets/stylesheets/comfortable_mexican_sofa/admin'
+        directory 'app/assets/javascripts/comfypress/admin',
+          'app/assets/javascripts/comfypress/admin'
+        directory 'app/assets/stylesheets/comfypress/admin',
+          'app/assets/stylesheets/comfypress/admin'
       end
       
       def show_readme

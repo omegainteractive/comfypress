@@ -1,11 +1,11 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery-ui
-#= require comfortable_mexican_sofa/lib/bootstrap
-#= require comfortable_mexican_sofa/lib/codemirror
-#= require comfortable_mexican_sofa/lib/wysihtml5
-#= require comfortable_mexican_sofa/lib/bootstrap-wysihtml5
-#= require comfortable_mexican_sofa/lib/bootstrap-datetimepicker
+#= require comfypress/lib/bootstrap
+#= require comfypress/lib/codemirror
+#= require comfypress/lib/wysihtml5
+#= require comfypress/lib/bootstrap-wysihtml5
+#= require comfypress/lib/bootstrap-datetimepicker
 
 $ ->
   CMS.init()

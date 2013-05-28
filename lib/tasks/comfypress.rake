@@ -3,7 +3,7 @@ namespace :db do
   task :abort_if_pending_migrations => [:migrate]
 end
 
-namespace :comfortable_mexican_sofa do
+namespace :comfypress do
   namespace :fixtures do
     
     desc 'Import Fixture data into database (options: FROM=folder_name TO=site_identifier)'
