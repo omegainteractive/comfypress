@@ -1,6 +1,6 @@
 class Cms::Menu < ActiveRecord::Base
   
-  attr_accessible :label, :site_id
+  attr_accessible :label, :site_id, :identifier
   
   # -- Relationships --------------------------------------------------------
   belongs_to :site
