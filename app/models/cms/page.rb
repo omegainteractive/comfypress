@@ -12,7 +12,7 @@ class Cms::Page < ActiveRecord::Base
                   :parent, :parent_id,
                   :blocks_attributes,
                   :is_published,
-                  :target_page_id,
+                  :target_page_id, :menu_id,
                   :category_ids
   
   cms_acts_as_tree :counter_cache => :children_count
@@ -31,6 +31,7 @@ class Cms::Page < ActiveRecord::Base
   has_many :blocks,
     :autosave   => true,
     :dependent  => :destroy
+  has_one :menu
   
   # -- Callbacks ------------------------------------------------------------
   before_validation :assigns_label,

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  menu_id: 1
+  label: MyString
+  page_id: 1
+  link: MyString
+  type: 
+
+two:
+  menu_id: 1
+  label: MyString
+  page_id: 1
+  link: MyString
+  type: 

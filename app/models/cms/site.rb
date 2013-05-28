@@ -9,7 +9,8 @@ class Cms::Site < ActiveRecord::Base
                   :hostname,
                   :path,
                   :locale,
-                  :is_mirrored
+                  :is_mirrored,
+                  :menu_id
   
   # -- Relationships --------------------------------------------------------
   with_options :dependent => :destroy do |site|
@@ -18,6 +19,8 @@ class Cms::Site < ActiveRecord::Base
     site.has_many :snippets
     site.has_many :files
     site.has_many :categories
+    site.has_many :menus
+    site.has_many :menu_items, :through => :menus
   end
   
   # -- Callbacks ------------------------------------------------------------

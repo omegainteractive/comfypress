@@ -1,0 +1,24 @@
+.page-header
+  = link_to t('.new_link'), new_cms_admin_site_menu_menu_item_path(@site, @menu), :class => 'btn pull-right'
+  %h2= t('.title')
+
+- content_for :right_column do
+  = render :partial => 'cms_admin/sites/mirrors'
+
+%table.table.table-hover.table-bordered
+  %tbody.sortable
+    -  @menu_items.try(:each) do |menu_item|
+      %tr{:id => dom_id(menu_item)}
+        %td
+          .icon
+            - if !params[:category].present? && @menu.menu_items.count > 1
+              .dragger
+                %span &#8645;
+        %td.main
+          .item-title
+            = link_to menu_item.label, edit_cms_admin_site_menu_menu_item_path(@site, @menu, menu_item)
+        %td
+          .btn-group
+            = link_to t('.edit'), edit_cms_admin_site_menu_menu_item_path(@site, @menu, menu_item), :class => 'btn btn-small'
+           
+            = link_to t('.delete'), cms_admin_site_menu_menu_item_path(@site, @menu, menu_item), :method => :delete, :data => {:confirm => t('.are_you_sure')}, :class => 'btn btn-small btn-danger'

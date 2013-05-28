@@ -17,6 +17,7 @@ class CreateCms < ActiveRecord::Migration
       t.string :path
       t.string :locale,       :null => false, :default => 'en'
       t.boolean :is_mirrored, :null => false, :default => false
+      t.integer :menu_id
     end
     add_index :cms_sites, :hostname
     add_index :cms_sites, :is_mirrored
@@ -52,6 +53,7 @@ class CreateCms < ActiveRecord::Migration
       t.integer :children_count,  :null => false, :default => 0
       t.boolean :is_published,    :null => false, :default => true
       t.boolean :is_shared,       :null => false, :default => false
+      t.integer :menu_id
       t.timestamps
     end
     add_index :cms_pages, [:site_id, :full_path]
@@ -121,6 +123,27 @@ class CreateCms < ActiveRecord::Migration
     end
     add_index :cms_categorizations, [:category_id, :categorized_type, :categorized_id], :unique => true,
       :name => 'index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id'
+      
+    # -- Menus ---------------------------------------------------------
+      create_table :cms_menus do |t|
+        t.integer :site_id
+        t.string  :label
+        t.string  :identifier
+        t.timestamps
+      end
+        
+    # -- MenuItems ---------------------------------------------------------
+      create_table :cms_menu_items do |t|
+        t.integer :menu_id
+        t.string :label
+        t.integer :page_id
+        t.string :link
+        t.string :menu_item_type
+
+        t.timestamps
+      end
+
+
   end
   
   def self.down
@@ -133,6 +156,8 @@ class CreateCms < ActiveRecord::Migration
     drop_table :cms_revisions
     drop_table :cms_categories
     drop_table :cms_categorizations
+    drop_table :cms_menus
+    drop_table :cms_menu_items  
   end
 end
 

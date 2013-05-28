@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+Cms::Site.create( :label => 'testsite.com', :identifier => 'testsite.com', :hostname => 'testsite.com:3000', 
+  :locale => 'en', :is_mirrored => 0)

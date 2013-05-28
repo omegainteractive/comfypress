@@ -1,0 +1,22 @@
+- content_for :right_column do
+  = render :partial => 'cms_admin/files/index'
+
+= form.text_field :label
+.control-group
+  = form.label :menu_item_type, class: 'control-label'
+  .controls.menu-type-wrapper
+    %div
+      = label_tag 'menu_item_menu_item_type_page', class: 'radio inline' do
+        = radio_button_tag 'menu_item[menu_item_type]', 'page', @menu_item.menu_item_type == 'page', {data: {show: '.menu-type-page', hide: '.menu-type-link'}}
+        Page
+      = label_tag 'menu_item_menu_item_type_link', class: 'radio inline' do
+        = radio_button_tag 'menu_item[menu_item_type]', 'link', @menu_item.menu_item_type == 'link', {data: {show: '.menu-type-link', hide: '.menu-type-page'}}
+        link
+.hidden.menu-type-link
+  = form.text_field :link
+- if (options = Cms::Page.options_for_select(@site)).present?
+  .hidden.menu-type-page
+    = form.select :page_id, options, {:prompt => "Select page"}
+
+.form-actions
+  = form.submit t(@menu_item.new_record?? '.create' : '.update'), :class => 'btn btn-primary'
