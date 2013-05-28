@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::Partial
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::Partial
+  include ComfyPress::Tag
   
   def self.regex_tag_signature(identifier = nil)
     identifier ||= /[\w\/\-]+/
@@ -12,7 +12,7 @@ class ComfortableMexicanSofa::Tag::Partial
   end
   
   def render
-    whitelist = ComfortableMexicanSofa.config.allowed_partials
+    whitelist = ComfyPress.config.allowed_partials
     if whitelist.is_a?(Array)
       content if whitelist.member?(identifier)
     else

@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::PageFile
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::PageFile
+  include ComfyPress::Tag
   
   # Signature of a tag:
   #   {{ cms:page_file:some_label:type:params }}

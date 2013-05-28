@@ -3,20 +3,20 @@ require File.expand_path('../../test_helper', File.dirname(__FILE__))
 class FieldDateTimeTagTest < ActiveSupport::TestCase
   
   def test_initialize_tag
-    assert tag = ComfortableMexicanSofa::Tag::FieldDateTime.initialize_tag(
+    assert tag = ComfyPress::Tag::FieldDateTime.initialize_tag(
       cms_pages(:default), '{{ cms:field:content:datetime }}'
     )
     assert_equal 'content', tag.identifier
     assert_nil tag.namespace
-    assert tag = ComfortableMexicanSofa::Tag::FieldDateTime.initialize_tag(
+    assert tag = ComfyPress::Tag::FieldDateTime.initialize_tag(
       cms_pages(:default), '{{cms:field:content:datetime}}'
     )
     assert_equal 'content', tag.identifier
-    assert tag = ComfortableMexicanSofa::Tag::FieldDateTime.initialize_tag(
+    assert tag = ComfyPress::Tag::FieldDateTime.initialize_tag(
       cms_pages(:default), '{{cms:field:dash-content:datetime}}'
     )
     assert_equal 'dash-content', tag.identifier
-    assert tag = ComfortableMexicanSofa::Tag::FieldDateTime.initialize_tag(
+    assert tag = ComfyPress::Tag::FieldDateTime.initialize_tag(
       cms_pages(:default), '{{cms:field:namespace.content:datetime}}'
     )
     assert_equal 'namespace.content', tag.identifier
@@ -30,14 +30,14 @@ class FieldDateTimeTagTest < ActiveSupport::TestCase
       '{{cms:not_field:content}}',
       '{not_a_tag}'
     ].each do |tag_signature|
-      assert_nil ComfortableMexicanSofa::Tag::FieldDateTime.initialize_tag(
+      assert_nil ComfyPress::Tag::FieldDateTime.initialize_tag(
         cms_pages(:default), tag_signature
       )
     end
   end
   
   def test_content_and_render
-    tag = ComfortableMexicanSofa::Tag::FieldDateTime.initialize_tag(
+    tag = ComfyPress::Tag::FieldDateTime.initialize_tag(
       cms_pages(:default), '{{cms:field:content:datetime}}'
     )
     assert tag.block.content.blank?

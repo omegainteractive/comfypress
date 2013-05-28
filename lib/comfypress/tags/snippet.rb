@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::Snippet
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::Snippet
+  include ComfyPress::Tag
   
   def self.regex_tag_signature(identifier = nil)
     identifier ||= /[\w\-]+/

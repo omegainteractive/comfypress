@@ -1,4 +1,4 @@
-class ComfortableMexicanSofa::Sitemap
+class ComfyPress::Sitemap
   
   # we want our callback to include the cms_site and 
   # the view so we have whatever routes are available to us

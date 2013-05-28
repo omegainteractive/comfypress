@@ -3,7 +3,7 @@ require File.expand_path('../../test_helper', File.dirname(__FILE__))
 class PageFileTagTest < ActiveSupport::TestCase
   
   def test_initialize_tag
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(
       cms_pages(:default), '{{ cms:page_file:label }}'
     )
     assert_equal 'label', tag.identifier
@@ -11,12 +11,12 @@ class PageFileTagTest < ActiveSupport::TestCase
     assert 'url', tag.type
     assert_equal nil, tag.dimensions
     
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(
       cms_pages(:default), '{{ cms:page_file:label:partial }}'
     )
     assert_equal 'partial', tag.type
     
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(
       cms_pages(:default), '{{ cms:page_file:namespace.label:partial }}'
     )
     assert_equal 'namespace.label', tag.identifier
@@ -24,7 +24,7 @@ class PageFileTagTest < ActiveSupport::TestCase
   end
   
   def test_initialize_tag_with_dimentions
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(
       cms_pages(:default), '{{ cms:page_file:label:image[100x100#] }}'
     )
     assert_equal 'image', tag.type
@@ -37,7 +37,7 @@ class PageFileTagTest < ActiveSupport::TestCase
       '{{cms:not_page_file:label}}',
       '{not_a_tag}'
     ].each do |tag_signature|
-      assert_nil ComfortableMexicanSofa::Tag::PageFile.initialize_tag(
+      assert_nil ComfyPress::Tag::PageFile.initialize_tag(
         cms_pages(:default), tag_signature
       )
     end
@@ -46,10 +46,10 @@ class PageFileTagTest < ActiveSupport::TestCase
   def test_content_and_render
     page = cms_pages(:default)
     
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial }}')
     assert_equal "<%= render :partial => 'partials/page_file', :locals => {:identifier => nil} %>", tag.render
     
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file }}')
     assert_equal nil, tag.content
     assert_equal '', tag.render
     
@@ -65,35 +65,35 @@ class PageFileTagTest < ActiveSupport::TestCase
     assert_equal file, tag.content
     assert_match file_url, tag.render
     
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:link }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:link }}')
     assert_equal "<a href='#{file_url}' target='_blank'>file</a>", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:link:link label }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:link:link label }}')
     assert_equal "<a href='#{file_url}' target='_blank'>link label</a>", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:image }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:image }}')
     assert_equal "<img src='#{file_url}' alt='file' />", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:image:image alt }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:image:image alt }}')
     assert_equal "<img src='#{file_url}' alt='image alt' />", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial }}')
     assert_equal "<%= render :partial => 'partials/page_file', :locals => {:identifier => #{file.id}} %>", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial:path/to/partial }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial:path/to/partial }}')
     assert_equal "<%= render :partial => 'path/to/partial', :locals => {:identifier => #{file.id}} %>", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial:path/to/partial:a:b }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:partial:path/to/partial:a:b }}')
     assert_equal "<%= render :partial => 'path/to/partial', :locals => {:identifier => #{file.id}, :param_1 => 'a', :param_2 => 'b'} %>", 
       tag.render
       
-    assert tag = ComfortableMexicanSofa::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:field }}')
+    assert tag = ComfyPress::Tag::PageFile.initialize_tag(page, '{{ cms:page_file:file:field }}')
     assert_equal '', tag.render
   end
   

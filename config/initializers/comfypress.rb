@@ -1,17 +1,17 @@
 # encoding: utf-8
 
-ComfortableMexicanSofa.configure do |config|
+ComfyPress.configure do |config|
   # Title of the admin area
-  #   config.cms_title = 'ComfortableMexicanSofa CMS Engine'
+  #   config.cms_title = 'ComfyPress CMS Engine'
   
   # Module responsible for authentication. You can replace it with your own.
   # It simply needs to have #authenticate method. See http_auth.rb for reference.
-  #   config.admin_auth = 'ComfortableMexicanSofa::HttpAuth'
+  #   config.admin_auth = 'ComfyPress::HttpAuth'
   
   # Module responsible for public authentication. Similar to the above. You also
   # will have access to @cms_site, @cms_layout, @cms_page so you can use them in
   # your logic. Default module doesn't do anything.
-  #   config.public_auth = 'ComfortableMexicanSofa::DummyAuth'
+  #   config.public_auth = 'ComfyPress::DummyAuth'
   
   # When arriving at /cms-admin you may chose to redirect to arbirtary path,
   # for example '/cms-admin/users'
@@ -87,14 +87,14 @@ ComfortableMexicanSofa.configure do |config|
   
 end
 
-# Default credentials for ComfortableMexicanSofa::HttpAuth
+# Default credentials for ComfyPress::HttpAuth
 # YOU REALLY WANT TO CHANGE THIS BEFORE PUTTING YOUR SITE LIVE
-ComfortableMexicanSofa::HttpAuth.username = 'username'
-ComfortableMexicanSofa::HttpAuth.password = 'password'
+ComfyPress::HttpAuth.username = 'username'
+ComfyPress::HttpAuth.password = 'password'
 
 # If you need to inject some html in cms admin views you can define what partial
 # should be rendered into the following areas:
-#   ComfortableMexicanSofa::ViewHooks.add(:header, '/layouts/admin/header')
-#   ComfortableMexicanSofa::ViewHooks.add(:navigation, '/layouts/admin/navigation')
-#   ComfortableMexicanSofa::ViewHooks.add(:html_head, '/layouts/admin/html_head')
-#   ComfortableMexicanSofa::ViewHooks.add(:page_form, '/layouts/admin/page_form')
+#   ComfyPress::ViewHooks.add(:header, '/layouts/admin/header')
+#   ComfyPress::ViewHooks.add(:navigation, '/layouts/admin/navigation')
+#   ComfyPress::ViewHooks.add(:html_head, '/layouts/admin/html_head')
+#   ComfyPress::ViewHooks.add(:page_form, '/layouts/admin/page_form')

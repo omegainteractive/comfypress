@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'comfortable_mexican_sofa'
+require 'comfypress'
 require 'rails'
 require 'formatted_form'
 require 'active_link_to'
@@ -10,7 +10,7 @@ require 'haml-rails'
 require 'sass-rails'
 require 'coffee-rails'
 
-module ComfortableMexicanSofa
+module ComfyPress
   class Engine < ::Rails::Engine
     # ...
   end

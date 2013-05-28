@@ -2,7 +2,7 @@ require File.expand_path('../test_helper', File.dirname(__FILE__))
 
 class ViewMethodsTest < ActionView::TestCase
   
-  include ComfortableMexicanSofa::ViewMethods
+  include ComfyPress::ViewMethods
   
   class ::HelpersTestController < ActionController::Base
     helper { def hello; 'hello' end }

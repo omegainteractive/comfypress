@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    comfortable_mexican_sofa (1.8.1)
+    comfypress (0.1.0)
       active_link_to (>= 1.0.0)
       coffee-rails (>= 3.1.0)
       formatted_form (>= 2.1.0)
@@ -84,14 +84,14 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.1)
     mime-types (1.23)
     multi_json (1.7.4)
-    libv8 (3.11.8.17)
-   method_source (0.8.1)
-   mysql (2.9.1)
+    mysql (2.9.1)
     mysql2 (0.3.11)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
@@ -164,9 +164,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  comfortable_mexican_sofa!
+  comfypress!
   coveralls
-  sqlite3
   libv8
   mysql
   mysql2 (~> 0.3.11)

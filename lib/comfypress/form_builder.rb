@@ -1,4 +1,4 @@
-class ComfortableMexicanSofa::FormBuilder < FormattedForm::FormBuilder
+class ComfyPress::FormBuilder < FormattedForm::FormBuilder
   
   # -- Tag Field Fields -----------------------------------------------------
   def default_tag_field(tag, index, method = :text_field_tag, options = {})

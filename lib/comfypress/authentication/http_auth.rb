@@ -1,8 +1,8 @@
-module ComfortableMexicanSofa::HttpAuth
+module ComfyPress::HttpAuth
   # Set username and password in config/initializers/comfortable_mexican_sofa.rb
   # Like this:
-  #   ComfortableMexicanSofa::HttpAuth.username = 'myname'
-  #   ComfortableMexicanSofa::HttpAuth.password = 'mypassword'
+  #   ComfyPress::HttpAuth.username = 'myname'
+  #   ComfyPress::HttpAuth.password = 'mypassword'
   mattr_accessor  :username,
                   :password
   

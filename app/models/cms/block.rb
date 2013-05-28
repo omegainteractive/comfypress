@@ -1,6 +1,6 @@
 class Cms::Block < ActiveRecord::Base
   
-  ComfortableMexicanSofa.establish_connection(self)
+  ComfyPress.establish_connection(self)
   
   self.table_name = 'cms_blocks'
   
@@ -35,7 +35,7 @@ protected
     end
     
     # only accepting one file if it's PageFile. PageFiles will take all
-    single_file = self.tag.is_a?(ComfortableMexicanSofa::Tag::PageFile)
+    single_file = self.tag.is_a?(ComfyPress::Tag::PageFile)
     temp_files = [temp_files.first].compact if single_file
     
     temp_files.each do |file|

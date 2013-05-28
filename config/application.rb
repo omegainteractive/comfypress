@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module ComfortableMexicanSofa
+module ComfyPress
   class Application < Rails::Application
     
     require 'comfortable_mexican_sofa'

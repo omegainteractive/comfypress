@@ -5,10 +5,10 @@ require 'csv'
 # This module provides all Tag classes with neccessary methods.
 # Example class that will behave as a Tag:
 #   class MySpecialTag
-#     include ComfortableMexicanSofa::Tag
+#     include ComfyPress::Tag
 #     ...
 #   end
-module ComfortableMexicanSofa::Tag
+module ComfyPress::Tag
   
   TOKENIZER_REGEX   = /(\{\{\s*cms:[^{}]*\}\})|((?:\{?[^{])+|\{+)/
   IDENTIFIER_REGEX  = /\w+[\-\.\w]+\w+/
@@ -81,8 +81,8 @@ module ComfortableMexicanSofa::Tag
     # Content that is used during page rendering. Outputting existing content
     # as a default.
     def render
-      ignore = [ComfortableMexicanSofa::Tag::Partial, ComfortableMexicanSofa::Tag::Helper].member?(self.class)
-      ComfortableMexicanSofa::Tag.sanitize_irb(content, ignore)
+      ignore = [ComfyPress::Tag::Partial, ComfyPress::Tag::Helper].member?(self.class)
+      ComfyPress::Tag.sanitize_irb(content, ignore)
     end
     
     # Find or initialize Cms::Block object
@@ -133,7 +133,7 @@ private
   
   # Cleaning content from possible irb stuff. Partial and Helper tags are OK.
   def self.sanitize_irb(content, ignore = false)
-    if ComfortableMexicanSofa.config.allow_irb || ignore
+    if ComfyPress.config.allow_irb || ignore
       content.to_s
     else
       content.to_s.gsub('<%', '&lt;%').gsub('%>', '%&gt;')
@@ -141,8 +141,8 @@ private
   end
   
   def self.included(tag)
-    tag.send(:include, ComfortableMexicanSofa::Tag::InstanceMethods)
-    tag.send(:extend, ComfortableMexicanSofa::Tag::ClassMethods)
+    tag.send(:include, ComfyPress::Tag::InstanceMethods)
+    tag.send(:extend, ComfyPress::Tag::ClassMethods)
     @@tag_classes ||= []
     @@tag_classes << tag
   end

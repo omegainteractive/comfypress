@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::HasRevisions
+module ComfyPress::HasRevisions
   
   def self.included(base)
     base.send :extend, ClassMethods
@@ -8,7 +8,7 @@ module ComfortableMexicanSofa::HasRevisions
     
     def cms_has_revisions_for(*fields)
       
-      include ComfortableMexicanSofa::HasRevisions::InstanceMethods
+      include ComfyPress::HasRevisions::InstanceMethods
       
       attr_accessor :revision_data
       
@@ -44,12 +44,12 @@ module ComfortableMexicanSofa::HasRevisions
       return unless self.revision_data
       
       # creating revision
-      if ComfortableMexicanSofa.config.revisions_limit.to_i != 0
+      if ComfyPress.config.revisions_limit.to_i != 0
         self.revisions.create!(:data => self.revision_data)
       end
       
       # blowing away old revisions
-      ids = [0] + self.revisions.limit(ComfortableMexicanSofa.config.revisions_limit.to_i).collect(&:id)
+      ids = [0] + self.revisions.limit(ComfyPress.config.revisions_limit.to_i).collect(&:id)
       self.revisions.where('id NOT IN (?)', ids).destroy_all
     end
     
@@ -61,4 +61,4 @@ module ComfortableMexicanSofa::HasRevisions
   end
 end
 
-ActiveRecord::Base.send :include, ComfortableMexicanSofa::HasRevisions
+ActiveRecord::Base.send :include, ComfyPress::HasRevisions

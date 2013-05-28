@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::PageInteger
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::PageInteger
+  include ComfyPress::Tag
   
   def self.regex_tag_signature(identifier = nil)
     identifier ||= IDENTIFIER_REGEX

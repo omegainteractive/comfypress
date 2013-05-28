@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::IsMirrored
+module ComfyPress::IsMirrored
   
   def self.included(base)
     base.send :extend, ClassMethods
@@ -6,7 +6,7 @@ module ComfortableMexicanSofa::IsMirrored
   
   module ClassMethods
     def cms_is_mirrored
-      include ComfortableMexicanSofa::IsMirrored::InstanceMethods
+      include ComfyPress::IsMirrored::InstanceMethods
       
       attr_accessor :is_mirrored
       
@@ -82,4 +82,4 @@ module ComfortableMexicanSofa::IsMirrored
   
 end
 
-ActiveRecord::Base.send :include, ComfortableMexicanSofa::IsMirrored
+ActiveRecord::Base.send :include, ComfyPress::IsMirrored

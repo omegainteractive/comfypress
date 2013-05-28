@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::ViewHooks
+module ComfyPress::ViewHooks
   
   # Array of declared hooks
   def self.hooks
@@ -16,7 +16,7 @@ module ComfortableMexicanSofa::ViewHooks
   
   # Will declare a partial that will be rendered for this hook
   # Example:
-  # ComfortableMexicanSofa::ViewHooks.add(:navigation, 'shared/navigation')
+  # ComfyPress::ViewHooks.add(:navigation, 'shared/navigation')
   def self.add(name, partial_path, position = 0)
     self.hooks[name.to_sym] ||= []
     self.hooks[name.to_sym] << [partial_path, position]

@@ -1,8 +1,8 @@
 # encoding: utf-8
 
-class ComfortableMexicanSofa::Configuration
+class ComfyPress::Configuration
 
-  # Don't like ComfortableMexicanSofa? Set it to whatever you like. :(
+  # Don't like ComfyPress? Set it to whatever you like. :(
   attr_accessor :cms_title
 
   # Module that will handle authentication to access cms-admin area
@@ -65,9 +65,9 @@ class ComfortableMexicanSofa::Configuration
   
   # Configuration defaults
   def initialize
-    @cms_title            = 'ComfortableMexicanSofa CMS Engine'
-    @admin_auth           = 'ComfortableMexicanSofa::HttpAuth'
-    @public_auth          = 'ComfortableMexicanSofa::DummyAuth'
+    @cms_title            = 'ComfyPress CMS Engine'
+    @admin_auth           = 'ComfyPress::HttpAuth'
+    @public_auth          = 'ComfyPress::DummyAuth'
     @seed_data_path       = nil
     @admin_route_redirect = ''
     @enable_sitemap       = true

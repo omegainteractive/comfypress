@@ -20,7 +20,7 @@ class FixturesTest < ActionDispatch::IntegrationTest
   end
   
   def test_fixtures_enabled
-    ComfortableMexicanSofa.config.enable_fixtures = true
+    ComfyPress.config.enable_fixtures = true
     Cms::Layout.destroy_all
     Cms::Page.destroy_all
     Cms::Snippet.destroy_all
@@ -42,7 +42,7 @@ class FixturesTest < ActionDispatch::IntegrationTest
   end
   
   def test_fixtures_enabled_in_admin
-    ComfortableMexicanSofa.config.enable_fixtures = true
+    ComfyPress.config.enable_fixtures = true
     Cms::Layout.destroy_all
     Cms::Page.destroy_all
     Cms::Snippet.destroy_all

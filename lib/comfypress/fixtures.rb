@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::Fixtures
+module ComfyPress::Fixtures
   
   def self.import_all(to_site, from_folder = nil, force_import = false)
     import_layouts  to_site, from_folder, nil, true, nil, [], force_import
@@ -15,7 +15,7 @@ module ComfortableMexicanSofa::Fixtures
   def self.import_layouts(to_site, from_folder = nil, path = nil, root = true, parent = nil, layout_ids = [], force_import = false)
     site = Cms::Site.find_or_create_by_identifier(to_site)
     unless path ||= find_fixtures_path((from_folder || to_site), 'layouts')
-      ComfortableMexicanSofa.logger.warn('Cannot find Layout fixtures')
+      ComfyPress.logger.warn('Cannot find Layout fixtures')
       return []
     end
     
@@ -57,9 +57,9 @@ module ComfortableMexicanSofa::Fixtures
       layout.parent = parent
       if layout.changed?
         if layout.save
-          ComfortableMexicanSofa.logger.warn("[Fixtures] Saved Layout {#{layout.identifier}}")
+          ComfyPress.logger.warn("[Fixtures] Saved Layout {#{layout.identifier}}")
         else
-          ComfortableMexicanSofa.logger.error("[Fixtures] Failed to save Layout {#{layout.errors.inspect}}")
+          ComfyPress.logger.error("[Fixtures] Failed to save Layout {#{layout.errors.inspect}}")
           next
         end
       end
@@ -72,7 +72,7 @@ module ComfortableMexicanSofa::Fixtures
     # removing all db entries that are not in fixtures
     if root
       site.layouts.where('id NOT IN (?)', layout_ids.uniq).each{ |l| l.destroy } 
-      ComfortableMexicanSofa.logger.warn('Imported Layouts!')
+      ComfyPress.logger.warn('Imported Layouts!')
     end
     
     # returning ids of layouts in fixtures
@@ -82,7 +82,7 @@ module ComfortableMexicanSofa::Fixtures
   def self.import_pages(to_site, from_folder = nil, path = nil, root = true, parent = nil, page_ids = [], force_import = false)
     site = Cms::Site.find_or_create_by_identifier(to_site)
     unless path ||= find_fixtures_path((from_folder || to_site), 'pages')
-      ComfortableMexicanSofa.logger.warn('Cannot find Page fixtures')
+      ComfyPress.logger.warn('Cannot find Page fixtures')
       return []
     end
     
@@ -135,9 +135,9 @@ module ComfortableMexicanSofa::Fixtures
       page.blocks_attributes = blocks_attributes if blocks_attributes.present?
       if page.changed? || blocks_attributes.present?
         if page.save
-          ComfortableMexicanSofa.logger.warn("[Fixtures] Saved Page {#{page.full_path}}")
+          ComfyPress.logger.warn("[Fixtures] Saved Page {#{page.full_path}}")
         else
-          ComfortableMexicanSofa.logger.warn("[Fixtures] Failed to save Page {#{page.errors.inspect}}")
+          ComfyPress.logger.warn("[Fixtures] Failed to save Page {#{page.errors.inspect}}")
           next
         end
       end
@@ -150,7 +150,7 @@ module ComfortableMexicanSofa::Fixtures
     # removing all db entries that are not in fixtures
     if root
       site.pages.where('id NOT IN (?)', page_ids.uniq).each{ |p| p.destroy }
-      ComfortableMexicanSofa.logger.warn('Imported Pages!')
+      ComfyPress.logger.warn('Imported Pages!')
     end
     
     # returning ids of layouts in fixtures
@@ -160,7 +160,7 @@ module ComfortableMexicanSofa::Fixtures
   def self.import_snippets(to_site, from_folder = nil, force_import = false)
     site = Cms::Site.find_or_create_by_identifier(to_site)
     unless path = find_fixtures_path((from_folder || to_site), 'snippets')
-      ComfortableMexicanSofa.logger.warn('Cannot find Snippet fixtures')
+      ComfyPress.logger.warn('Cannot find Snippet fixtures')
       return []
     end
     
@@ -189,9 +189,9 @@ module ComfortableMexicanSofa::Fixtures
       # saving
       if snippet.changed?
         if snippet.save
-          ComfortableMexicanSofa.logger.warn("[Fixtures] Saved Snippet {#{snippet.identifier}}")
+          ComfyPress.logger.warn("[Fixtures] Saved Snippet {#{snippet.identifier}}")
         else
-          ComfortableMexicanSofa.logger.warn("[Fixtures] Failed to save Snippet {#{snippet.errors.inspect}}")
+          ComfyPress.logger.warn("[Fixtures] Failed to save Snippet {#{snippet.errors.inspect}}")
           next
         end
       end
@@ -200,12 +200,12 @@ module ComfortableMexicanSofa::Fixtures
     
     # removing all db entries that are not in fixtures
     site.snippets.where('id NOT IN (?)', snippet_ids).each{ |s| s.destroy }
-    ComfortableMexicanSofa.logger.warn('Imported Snippets!')
+    ComfyPress.logger.warn('Imported Snippets!')
   end
   
   def self.export_layouts(from_site, to_folder = nil)
     return unless site = Cms::Site.find_by_identifier(from_site)
-    path = File.join(ComfortableMexicanSofa.config.fixtures_path, (to_folder || site.identifier), 'layouts')
+    path = File.join(ComfyPress.config.fixtures_path, (to_folder || site.identifier), 'layouts')
     FileUtils.rm_rf(path)
     FileUtils.mkdir_p(path)
     
@@ -235,7 +235,7 @@ module ComfortableMexicanSofa::Fixtures
   
   def self.export_pages(from_site, to_folder = nil)
     return unless site = Cms::Site.find_by_identifier(from_site)
-    path = File.join(ComfortableMexicanSofa.config.fixtures_path, (to_folder || site.identifier), 'pages')
+    path = File.join(ComfyPress.config.fixtures_path, (to_folder || site.identifier), 'pages')
     FileUtils.rm_rf(path)
     FileUtils.mkdir_p(path)
     
@@ -264,7 +264,7 @@ module ComfortableMexicanSofa::Fixtures
   
   def self.export_snippets(from_site, to_folder = nil)
     return unless site = Cms::Site.find_by_identifier(from_site)
-    path = File.join(ComfortableMexicanSofa.config.fixtures_path, (to_folder || site.identifier), 'snippets')
+    path = File.join(ComfyPress.config.fixtures_path, (to_folder || site.identifier), 'snippets')
     FileUtils.rm_rf(path)
     FileUtils.mkdir_p(path)
     
@@ -282,7 +282,7 @@ module ComfortableMexicanSofa::Fixtures
 protected
   
   def self.find_fixtures_path(identifier, dir)
-    path = File.join(ComfortableMexicanSofa.config.fixtures_path, identifier, dir)
+    path = File.join(ComfyPress.config.fixtures_path, identifier, dir)
     File.exists?(path) ? path : nil
   end
   

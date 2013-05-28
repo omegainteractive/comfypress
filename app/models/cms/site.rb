@@ -1,6 +1,6 @@
 class Cms::Site < ActiveRecord::Base
   
-  ComfortableMexicanSofa.establish_connection(self)
+  ComfyPress.establish_connection(self)
   
   self.table_name = 'cms_sites'
   
@@ -72,7 +72,7 @@ class Cms::Site < ActiveRecord::Base
 protected
   
   def self.real_host_from_aliases(host)
-    if aliases = ComfortableMexicanSofa.config.hostname_aliases
+    if aliases = ComfyPress.config.hostname_aliases
       aliases.each do |alias_host, aliases|
         return alias_host if aliases.include?(host)
       end

@@ -3,24 +3,24 @@ require File.expand_path('../../test_helper', File.dirname(__FILE__))
 class PageTextTagTest < ActiveSupport::TestCase
   
   def test_initialize_tag
-    assert tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    assert tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{ cms:page:content:text }}'
     )
     assert_equal 'content', tag.identifier
     assert_nil tag.namespace
-    assert tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    assert tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{cms:page:content}}'
     )
     assert_equal 'content', tag.identifier
-    assert tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    assert tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{cms:page:content:text}}'
     )
     assert_equal 'content', tag.identifier
-    assert tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    assert tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{cms:page:dash-content}}'
     )
     assert_equal 'dash-content', tag.identifier
-    assert tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    assert tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{cms:page:namespace.content}}'
     )
     assert_equal 'namespace.content', tag.identifier
@@ -33,14 +33,14 @@ class PageTextTagTest < ActiveSupport::TestCase
       '{{cms:not_page:content}}',
       '{not_a_tag}'
     ].each do |tag_signature|
-      assert_nil ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+      assert_nil ComfyPress::Tag::PageText.initialize_tag(
         cms_pages(:default), tag_signature
       )
     end
   end
   
   def test_content_and_render
-    tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{cms:page:content}}'
     )
     assert tag.block.content.blank?

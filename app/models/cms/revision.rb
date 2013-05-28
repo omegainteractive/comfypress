@@ -1,6 +1,6 @@
 class Cms::Revision < ActiveRecord::Base
   
-  ComfortableMexicanSofa.establish_connection(self)
+  ComfyPress.establish_connection(self)
   
   self.table_name = 'cms_revisions'
   

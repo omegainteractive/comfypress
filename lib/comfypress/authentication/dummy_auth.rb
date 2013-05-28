@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::DummyAuth
+module ComfyPress::DummyAuth
 
   # Will always let you in
   def authenticate

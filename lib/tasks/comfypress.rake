@@ -16,12 +16,12 @@ namespace :comfortable_mexican_sofa do
       puts "Importing CMS Fixtures from Folder [#{from}] to Site [#{to}] ..."
 
       # changing so that logger is going straight to screen
-      logger_org = ComfortableMexicanSofa.logger
-      ComfortableMexicanSofa.logger = Logger.new(STDOUT)
+      logger_org = ComfyPress.logger
+      ComfyPress.logger = Logger.new(STDOUT)
 
-      ComfortableMexicanSofa::Fixtures.import_all(to, from, force_reload)
+      ComfyPress::Fixtures.import_all(to, from, force_reload)
 
-      ComfortableMexicanSofa.logger = logger_org
+      ComfyPress.logger = logger_org
     end
     
     desc 'Export database data into Fixtures (options: FROM=site_identifier.com TO=folder_name)'
@@ -32,12 +32,12 @@ namespace :comfortable_mexican_sofa do
       puts "Exporting CMS data from Site [#{from}] to Folder [#{to}] ..."
 
       # changing so that logger is going straight to screen
-      logger_org = ComfortableMexicanSofa.logger
-      ComfortableMexicanSofa.logger = Logger.new(STDOUT)
+      logger_org = ComfyPress.logger
+      ComfyPress.logger = Logger.new(STDOUT)
 
-      ComfortableMexicanSofa::Fixtures.export_all(from, to)
+      ComfyPress::Fixtures.export_all(from, to)
 
-      ComfortableMexicanSofa.logger = logger_org
+      ComfyPress.logger = logger_org
       
       puts 'Done!'
     end

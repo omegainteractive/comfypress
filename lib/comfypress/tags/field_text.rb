@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::FieldText
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::FieldText
+  include ComfyPress::Tag
   
   def self.regex_tag_signature(identifier = nil)
     identifier ||= IDENTIFIER_REGEX

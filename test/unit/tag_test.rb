@@ -3,7 +3,7 @@ require File.expand_path('../test_helper', File.dirname(__FILE__))
 class TagTest < ActiveSupport::TestCase
   
   def test_tokenizer_regex
-    regex = ComfortableMexicanSofa::Tag::TOKENIZER_REGEX
+    regex = ComfyPress::Tag::TOKENIZER_REGEX
     
     tokens = 'text { text } text'.scan(regex)
     assert_equal nil,                   tokens[0][0]
@@ -60,7 +60,7 @@ class TagTest < ActiveSupport::TestCase
   
   def test_tokenizer_regex_limit
     string = '<p>text</p>' * 400
-    tokens = string.scan(ComfortableMexicanSofa::Tag::TOKENIZER_REGEX)
+    tokens = string.scan(ComfyPress::Tag::TOKENIZER_REGEX)
     assert_equal 1, tokens.count
     assert_equal nil, tokens[0][0]
     assert_equal string, tokens[0][1]
@@ -198,29 +198,29 @@ class TagTest < ActiveSupport::TestCase
   end
   
   def test_is_cms_block?
-    tag = ComfortableMexicanSofa::Tag::PageText.initialize_tag(
+    tag = ComfyPress::Tag::PageText.initialize_tag(
       cms_pages(:default), '{{ cms:page:content:text }}'
     )
     assert tag.is_cms_block?
     
-    tag = ComfortableMexicanSofa::Tag::FieldText.initialize_tag(
+    tag = ComfyPress::Tag::FieldText.initialize_tag(
       cms_pages(:default), '{{ cms:field:content:text }}'
     )
     assert tag.is_cms_block?
     
-    tag = ComfortableMexicanSofa::Tag::Snippet.initialize_tag(
+    tag = ComfyPress::Tag::Snippet.initialize_tag(
       cms_pages(:default), '{{ cms:snippet:label }}'
     )
     assert !tag.is_cms_block?
 
-    tag = ComfortableMexicanSofa::Tag::File.initialize_tag(
+    tag = ComfyPress::Tag::File.initialize_tag(
       cms_pages(:default), '{{ cms:file:sample.jpg }}'
     )
     assert !tag.is_cms_block?
   end
   
   def test_content_with_irb_disabled
-    assert_equal false, ComfortableMexicanSofa.config.allow_irb
+    assert_equal false, ComfyPress.config.allow_irb
     
     site = cms_sites(:default)
     layout = site.layouts.create!(
@@ -246,7 +246,7 @@ class TagTest < ActiveSupport::TestCase
   end
   
   def test_content_with_irb_enabled
-    ComfortableMexicanSofa.config.allow_irb = true
+    ComfyPress.config.allow_irb = true
     
     site = cms_sites(:default)
     layout = site.layouts.create!(
@@ -272,7 +272,7 @@ class TagTest < ActiveSupport::TestCase
   end
   
   def test_escaping_of_parameters
-    tag = ComfortableMexicanSofa::Tag::Helper.initialize_tag(
+    tag = ComfyPress::Tag::Helper.initialize_tag(
       cms_pages(:default), '{{cms:helper:h:"\'+User.first.inspect+\'"}}'
     )
     assert_equal %{<%= h('\\'+User.first.inspect+\\'') %>}, tag.content
@@ -280,25 +280,25 @@ class TagTest < ActiveSupport::TestCase
   end
   
   def test_tag_initialization_with_namespace
-    assert tag = ComfortableMexicanSofa::Tag::PageString.initialize_tag(
+    assert tag = ComfyPress::Tag::PageString.initialize_tag(
       cms_pages(:default), '{{ cms:page:content:string }}'
     )
     assert_equal 'content', tag.identifier
     assert_equal nil, tag.namespace
     
-    assert tag = ComfortableMexicanSofa::Tag::PageString.initialize_tag(
+    assert tag = ComfyPress::Tag::PageString.initialize_tag(
       cms_pages(:default), '{{ cms:page:home.content:string }}'
     )
     assert_equal 'home.content', tag.identifier
     assert_equal 'home', tag.namespace
     
-    assert tag = ComfortableMexicanSofa::Tag::PageString.initialize_tag(
+    assert tag = ComfyPress::Tag::PageString.initialize_tag(
       cms_pages(:default), '{{ cms:page:home.main.content:string }}'
     )
     assert_equal 'home.main.content', tag.identifier
     assert_equal 'home.main', tag.namespace
     
-    assert tag = ComfortableMexicanSofa::Tag::PageString.initialize_tag(
+    assert tag = ComfyPress::Tag::PageString.initialize_tag(
       cms_pages(:default), '{{ cms:page:ho-me.ma-in.con-tent:string }}'
     )
     assert_equal 'ho-me.ma-in.con-tent', tag.identifier

@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::Routing
+module ComfyPress::Routing
   
   def self.admin(options = {})
     options[:path] ||= 'cms-admin'

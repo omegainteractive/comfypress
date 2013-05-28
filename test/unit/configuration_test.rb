@@ -5,10 +5,10 @@ require File.expand_path('../test_helper', File.dirname(__FILE__))
 class ConfigurationTest < ActiveSupport::TestCase
   
   def test_configuration_presence
-    assert config = ComfortableMexicanSofa.configuration
-    assert_equal 'ComfortableMexicanSofa CMS Engine', config.cms_title
-    assert_equal 'ComfortableMexicanSofa::HttpAuth', config.admin_auth
-    assert_equal 'ComfortableMexicanSofa::DummyAuth', config.public_auth
+    assert config = ComfyPress.configuration
+    assert_equal 'ComfyPress CMS Engine', config.cms_title
+    assert_equal 'ComfyPress::HttpAuth', config.admin_auth
+    assert_equal 'ComfyPress::DummyAuth', config.public_auth
     assert_equal '', config.admin_route_redirect
     assert_equal false, config.enable_fixtures
     assert_equal File.expand_path('db/cms_fixtures', Rails.root), config.fixtures_path
@@ -31,12 +31,12 @@ class ConfigurationTest < ActiveSupport::TestCase
   end
   
   def test_initialization_overrides
-    ComfortableMexicanSofa.configuration.cms_title = 'New Title'
-    assert_equal 'New Title', ComfortableMexicanSofa.configuration.cms_title
+    ComfyPress.configuration.cms_title = 'New Title'
+    assert_equal 'New Title', ComfyPress.configuration.cms_title
   end
   
   def test_version
-    assert ComfortableMexicanSofa::VERSION
+    assert ComfyPress::VERSION
   end
   
 end

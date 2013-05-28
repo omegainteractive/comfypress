@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::RenderMethods
+module ComfyPress::RenderMethods
   
   def self.included(base)
     
@@ -8,7 +8,7 @@ module ComfortableMexicanSofa::RenderMethods
     base.rescue_from 'ActionView::MissingTemplate' do |e|
       begin
         render :cms_page => request.path
-      rescue ComfortableMexicanSofa::MissingPage
+      rescue ComfyPress::MissingPage
         raise e
       end
     end
@@ -38,7 +38,7 @@ module ComfortableMexicanSofa::RenderMethods
       
       if options.is_a?(Hash) && identifier = options.delete(:cms_site)
         unless @cms_site = Cms::Site.find_by_identifier(identifier)
-          raise ComfortableMexicanSofa::MissingSite.new(identifier)
+          raise ComfyPress::MissingSite.new(identifier)
         end
       end
       
@@ -51,7 +51,7 @@ module ComfortableMexicanSofa::RenderMethods
           options[:inline] = @cms_page.content
           super(options, locals, &block)
         else
-          raise ComfortableMexicanSofa::MissingPage.new(path)
+          raise ComfyPress::MissingPage.new(path)
         end
         
       elsif options.is_a?(Hash) && identifier = options.delete(:cms_layout)
@@ -72,7 +72,7 @@ module ComfortableMexicanSofa::RenderMethods
           options[:inline] = cms_page.content(true)
           super(options, locals, &block)
         else
-          raise ComfortableMexicanSofa::MissingLayout.new(identifier)
+          raise ComfyPress::MissingLayout.new(identifier)
         end
         
       else
@@ -82,4 +82,4 @@ module ComfortableMexicanSofa::RenderMethods
   end
 end
 
-ActionController::Base.send :include, ComfortableMexicanSofa::RenderMethods
+ActionController::Base.send :include, ComfyPress::RenderMethods

@@ -1,4 +1,4 @@
-module ComfortableMexicanSofa::ActsAsTree
+module ComfyPress::ActsAsTree
   
   def self.included(base)
     base.extend(ClassMethods)
@@ -27,7 +27,7 @@ module ComfortableMexicanSofa::ActsAsTree
         :dependent      => configuration[:dependent]
         
       class_eval <<-EOV
-        include ComfortableMexicanSofa::ActsAsTree::InstanceMethods
+        include ComfyPress::ActsAsTree::InstanceMethods
         
         scope :roots,
           :conditions => "#{configuration[:foreign_key]} IS NULL",
@@ -99,4 +99,4 @@ module ComfortableMexicanSofa::ActsAsTree
   end
 end
 
-ActiveRecord::Base.send :include, ComfortableMexicanSofa::ActsAsTree
+ActiveRecord::Base.send :include, ComfyPress::ActsAsTree

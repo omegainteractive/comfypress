@@ -1,15 +1,15 @@
-module ComfortableMexicanSofa::ViewMethods
+module ComfyPress::ViewMethods
   
-  # Wrapper around ComfortableMexicanSofa::FormBuilder
+  # Wrapper around ComfyPress::FormBuilder
   def comfy_form_for(record, options = {}, &proc)
-    options[:builder] = ComfortableMexicanSofa::FormBuilder
+    options[:builder] = ComfyPress::FormBuilder
     options[:type] ||= :horizontal
     formatted_form_for(record, options, &proc)
   end
   
   # Injects some content somewhere inside cms admin area
   def cms_hook(name, options = {})
-    ComfortableMexicanSofa::ViewHooks.render(name, self, options)
+    ComfyPress::ViewHooks.render(name, self, options)
   end
   
   # Content of a snippet. Example:
@@ -26,7 +26,7 @@ module ComfortableMexicanSofa::ViewMethods
     else
       return '' unless snippet = cms_site.snippets.find_by_identifier(identifier)
     end
-    render :inline => ComfortableMexicanSofa::Tag.process_content(cms_site.pages.build, snippet.content)
+    render :inline => ComfyPress::Tag.process_content(cms_site.pages.build, snippet.content)
   end
   
   # Content of a page block. This is how you get content from page:field
@@ -39,14 +39,14 @@ module ComfortableMexicanSofa::ViewMethods
     # If block is a page_file(s) we will return objects instead of attempting
     # to render them out
     case block.tag
-    when ComfortableMexicanSofa::Tag::PageFile
+    when ComfyPress::Tag::PageFile
       block.files.first
-    when ComfortableMexicanSofa::Tag::PageFiles
+    when ComfyPress::Tag::PageFiles
       block.files
     else
-      render :inline => ComfortableMexicanSofa::Tag.process_content(page, block.content)
+      render :inline => ComfyPress::Tag.process_content(page, block.content)
     end
   end
 end
 
-ActionView::Base.send :include, ComfortableMexicanSofa::ViewMethods
+ActionView::Base.send :include, ComfyPress::ViewMethods

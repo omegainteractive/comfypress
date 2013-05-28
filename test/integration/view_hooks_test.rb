@@ -4,7 +4,7 @@ class ViewHooksTest < ActionDispatch::IntegrationTest
   
   def test_hooks_rendering
     CmsAdmin::SitesController.append_view_path(File.expand_path('../fixtures/views', File.dirname(__FILE__)))
-    ComfortableMexicanSofa::ViewHooks.add(:navigation, '/nav_hook')
+    ComfyPress::ViewHooks.add(:navigation, '/nav_hook')
     
     http_auth :get, cms_admin_sites_path
     assert_response :success
@@ -13,8 +13,8 @@ class ViewHooksTest < ActionDispatch::IntegrationTest
   
   def test_hooks_rendering_with_multiples
     CmsAdmin::SitesController.append_view_path(File.expand_path('../fixtures/views', File.dirname(__FILE__)))
-    ComfortableMexicanSofa::ViewHooks.add(:navigation, '/nav_hook')
-    ComfortableMexicanSofa::ViewHooks.add(:navigation, '/nav_hook_2')
+    ComfyPress::ViewHooks.add(:navigation, '/nav_hook')
+    ComfyPress::ViewHooks.add(:navigation, '/nav_hook_2')
     
     http_auth :get, cms_admin_sites_path
     assert_response :success
@@ -24,8 +24,8 @@ class ViewHooksTest < ActionDispatch::IntegrationTest
 
   def test_hooks_rendering_with_proper_order
     CmsAdmin::SitesController.append_view_path(File.expand_path('../fixtures/views', File.dirname(__FILE__)))
-    ComfortableMexicanSofa::ViewHooks.add(:navigation, '/nav_hook_2', 0)
-    ComfortableMexicanSofa::ViewHooks.add(:navigation, '/nav_hook', 1)
+    ComfyPress::ViewHooks.add(:navigation, '/nav_hook_2', 0)
+    ComfyPress::ViewHooks.add(:navigation, '/nav_hook', 1)
     
     http_auth :get, cms_admin_sites_path
     assert_response :success
@@ -33,7 +33,7 @@ class ViewHooksTest < ActionDispatch::IntegrationTest
   end
   
   def test_hooks_rendering_with_no_hook
-    ComfortableMexicanSofa::ViewHooks.remove(:navigation)
+    ComfyPress::ViewHooks.remove(:navigation)
     
     http_auth :get, cms_admin_sites_path
     assert_response :success

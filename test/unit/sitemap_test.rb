@@ -12,8 +12,8 @@ class SitemapTest < ActiveSupport::TestCase
   end
 
   def test_should_get_registered_extensions
-    ComfortableMexicanSofa::Sitemap.register_extension(DummySitemapExtension.method(:callback))
-    ComfortableMexicanSofa::Sitemap.process(cms_sites(:default), nil, "xml")
+    ComfyPress::Sitemap.register_extension(DummySitemapExtension.method(:callback))
+    ComfyPress::Sitemap.process(cms_sites(:default), nil, "xml")
     assert_equal 1, DummySitemapExtension.calls
   end
 

@@ -15,7 +15,7 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
   end
   
   def test_get_with_unauthorized_access
-    assert_equal 'ComfortableMexicanSofa::HttpAuth', ComfortableMexicanSofa.config.admin_auth
+    assert_equal 'ComfyPress::HttpAuth', ComfyPress.config.admin_auth
     get '/cms-admin/sites'
     assert_response :unauthorized
     get '/'
@@ -28,9 +28,9 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
   end
   
   def test_get_with_changed_default_config
-    assert_equal 'ComfortableMexicanSofa::HttpAuth', ComfortableMexicanSofa.config.admin_auth
-    ComfortableMexicanSofa::HttpAuth.username = 'newuser'
-    ComfortableMexicanSofa::HttpAuth.password = 'newpass'
+    assert_equal 'ComfyPress::HttpAuth', ComfyPress.config.admin_auth
+    ComfyPress::HttpAuth.username = 'newuser'
+    ComfyPress::HttpAuth.password = 'newpass'
     http_auth :get, '/cms-admin/sites'
     assert_response :unauthorized
     http_auth :get, '/cms-admin/sites', {}, 'newuser', 'newpass'

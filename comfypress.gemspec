@@ -5,7 +5,7 @@ require 'comfypress/version'
 
 Gem::Specification.new do |s|
   s.name          = "comfypress"
-  s.version       = ComfyPress:VERSION
+  s.version       = ComfyPress::VERSION
   s.authors       = ["Nayeem Syed", "Omega Interactive Ltd"]
   s.email         = ["developerinlondon@gmail.com"]
   s.homepage      = "http://github.com/omegainteractive/comfypress"

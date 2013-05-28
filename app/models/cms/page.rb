@@ -2,7 +2,7 @@
 
 class Cms::Page < ActiveRecord::Base
   
-  ComfortableMexicanSofa.establish_connection(self)
+  ComfyPress.establish_connection(self)
     
   self.table_name = 'cms_pages'
   
@@ -115,9 +115,9 @@ class Cms::Page < ActiveRecord::Base
     @content ||= begin
       self.tags = [] # resetting
       if layout
-        ComfortableMexicanSofa::Tag.process_content(
+        ComfyPress::Tag.process_content(
           self,
-          ComfortableMexicanSofa::Tag.sanitize_irb(layout.merged_content)
+          ComfyPress::Tag.sanitize_irb(layout.merged_content)
         )
       else
         ''

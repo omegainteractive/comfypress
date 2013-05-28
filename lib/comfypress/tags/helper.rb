@@ -1,5 +1,5 @@
-class ComfortableMexicanSofa::Tag::Helper
-  include ComfortableMexicanSofa::Tag
+class ComfyPress::Tag::Helper
+  include ComfyPress::Tag
   
   BLACKLIST = %w(eval class_eval instance_eval render)
   
@@ -13,7 +13,7 @@ class ComfortableMexicanSofa::Tag::Helper
   end
   
   def render
-    whitelist = ComfortableMexicanSofa.config.allowed_helpers
+    whitelist = ComfyPress.config.allowed_helpers
     if whitelist.is_a?(Array)
       content if whitelist.map!(&:to_s).member?(identifier)
     else 

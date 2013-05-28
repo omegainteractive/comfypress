@@ -20,10 +20,10 @@ class ActiveSupport::TestCase
   
   # resetting default configuration
   def reset_config
-    ComfortableMexicanSofa.configure do |config|
-      config.cms_title            = 'ComfortableMexicanSofa CMS Engine'
-      config.admin_auth           = 'ComfortableMexicanSofa::HttpAuth'
-      config.public_auth          = 'ComfortableMexicanSofa::DummyAuth'
+    ComfyPress.configure do |config|
+      config.cms_title            = 'ComfyPress CMS Engine'
+      config.admin_auth           = 'ComfyPress::HttpAuth'
+      config.public_auth          = 'ComfyPress::DummyAuth'
       config.admin_route_redirect = ''
       config.enable_fixtures      = false
       config.fixtures_path        = File.expand_path('db/cms_fixtures', Rails.root)
@@ -43,8 +43,8 @@ class ActiveSupport::TestCase
       config.allowed_partials     = nil
       config.hostname_aliases     = nil
     end
-    ComfortableMexicanSofa::HttpAuth.username = 'username'
-    ComfortableMexicanSofa::HttpAuth.password = 'password'
+    ComfyPress::HttpAuth.username = 'username'
+    ComfyPress::HttpAuth.password = 'password'
   end
   
   # Example usage:
@@ -110,7 +110,7 @@ end
 
 
 # Injecting `update_column` for installs on Rails < 3.1
-module ComfortableMexicanSofa
+module ComfyPress
   module Deprication
     module ActiveRecord
       def update_column(name, value)
@@ -120,5 +120,5 @@ module ComfortableMexicanSofa
   end
 end
 unless Cms::Page.new.respond_to?(:update_column)
-  ActiveRecord::Base.send :include, ComfortableMexicanSofa::Deprication::ActiveRecord
+  ActiveRecord::Base.send :include, ComfyPress::Deprication::ActiveRecord
 end
