@@ -1,16 +1,16 @@
 # encoding: utf-8
 
 $:.unshift File.expand_path('../lib', __FILE__)
-require 'comfortable_mexican_sofa/version'
+require 'comfypress/version'
 
 Gem::Specification.new do |s|
-  s.name          = "comfortable_mexican_sofa"
-  s.version       = ComfortableMexicanSofa::VERSION
-  s.authors       = ["Oleg Khabarov", "The Working Group Inc"]
-  s.email         = ["oleg@khabarov.ca"]
-  s.homepage      = "http://github.com/comfy/comfortable-mexican-sofa"
-  s.summary       = "CMS Engine for Rails 3 apps"
-  s.description   = "ComfortableMexicanSofa is a powerful CMS Engine for Ruby on Rails 3 applications"
+  s.name          = "comfypress"
+  s.version       = ComfyPress:VERSION
+  s.authors       = ["Nayeem Syed", "Omega Interactive Ltd"]
+  s.email         = ["developerinlondon@gmail.com"]
+  s.homepage      = "http://github.com/omegainteractive/comfypress"
+  s.summary       = "CMS Engine for Rails 3 apps (Based on ComfortableMexicanSofa)"
+  s.description   = "ComfyPress is a powerful CMS Engine for Ruby on Rails 3 applications"
   
   s.files         = `git ls-files`.split("\n")
   s.platform      = Gem::Platform::RUBY
