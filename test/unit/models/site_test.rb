@@ -139,7 +139,7 @@ class CmsSiteTest < ActiveSupport::TestCase
     site_a = cms_sites(:default)
     site_b = Cms::Site.create!(:identifier => 'site_b', :hostname => 'test2.host')
     
-    ComfortableMexicanSofa.config.hostname_aliases = {
+    ComfyPress.config.hostname_aliases = {
       'test.host'   => 'alias_a.host',
       'test2.host'  => %w(alias_b.host alias_c.host)
     }

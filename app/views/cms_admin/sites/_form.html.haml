@@ -2,7 +2,7 @@
 = form.text_field :identifier, :data => {:slug => true}
 = form.text_field :hostname
 = form.text_field :path
-= form.select :locale, ComfortableMexicanSofa.config.locales.to_a.collect{|l| [l[1], l[0]]}
+= form.select :locale, ComfyPress.config.locales.to_a.collect{|l| [l[1], l[0]]}
 = form.check_box :is_mirrored, :label => t('.is_mirrored')
 
 - if (options = Cms::Menu.options_for_select(@site)).present?

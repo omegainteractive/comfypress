@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    comfypress (0.1.0)
+    comfypress (0.1.2)
       active_link_to (>= 1.0.0)
       coffee-rails (>= 3.1.0)
       formatted_form (>= 2.1.0)

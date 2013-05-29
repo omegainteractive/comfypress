@@ -55,7 +55,7 @@ protected
 
   def load_site
     @site = Cms::Site.find(params[:id])
-    I18n.locale = ComfortableMexicanSofa.config.admin_locale || @site.locale
+    I18n.locale = ComfyPress.config.admin_locale || @site.locale
   rescue ActiveRecord::RecordNotFound
     flash[:error] = I18n.t('cms.sites.not_found')
     redirect_to :action => :index

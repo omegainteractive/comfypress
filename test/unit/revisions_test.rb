@@ -166,7 +166,7 @@ class RevisionsTest < ActiveSupport::TestCase
   end
   
   def test_creation_with_limit
-    ComfortableMexicanSofa.config.revisions_limit = 1
+    ComfyPress.config.revisions_limit = 1
     snippet = cms_snippets(:default)
     revision = cms_revisions(:snippet)
     

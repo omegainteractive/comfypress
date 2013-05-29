@@ -101,7 +101,7 @@ class SitesTest < ActionDispatch::IntegrationTest
   end
   
   def test_get_admin_with_forced_locale
-    ComfortableMexicanSofa.config.admin_locale = :en
+    ComfyPress.config.admin_locale = :en
     
     cms_sites(:default).update_column(:locale, 'fr')
     http_auth :get, cms_admin_site_pages_path(cms_sites(:default))

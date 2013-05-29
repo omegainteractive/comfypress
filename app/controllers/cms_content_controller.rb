@@ -1,7 +1,7 @@
 class CmsContentController < ApplicationController
   
   # Authentication module must have #authenticate method
-  include ComfortableMexicanSofa.config.public_auth.to_s.constantize
+  include ComfyPress.config.public_auth.to_s.constantize
   
   before_filter :load_cms_site,
                 :load_fixtures
@@ -35,8 +35,8 @@ class CmsContentController < ApplicationController
 protected
 
   def load_fixtures
-    return unless ComfortableMexicanSofa.config.enable_fixtures
-    ComfortableMexicanSofa::Fixtures.import_all(@cms_site.identifier)
+    return unless ComfyPress.config.enable_fixtures
+    ComfyPress::Fixtures.import_all(@cms_site.identifier)
   end
   
   def load_cms_site

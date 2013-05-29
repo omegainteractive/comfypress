@@ -7,7 +7,7 @@ module ApplicationHelper
         page = Cms::Page.find(menu_item.page_id)
         link = link_to(menu_item.label, page.url)
       else
-        ComfortableMexicanSofa.logger.warn('Page is not selected for menu item.')
+        ComfyPress.logger.warn('Page is not selected for menu item.')
       end
     end
 

@@ -41,7 +41,7 @@ module ComfyPress
       yield configuration
     end
     
-    # Accessor for ComfortableMexicanSofa::Configuration
+    # Accessor for ComfyPress::Configuration
     def configuration
       @configuration ||= Configuration.new
     end

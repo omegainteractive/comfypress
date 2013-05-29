@@ -11,7 +11,7 @@
       = t('.no_tags').html_safe
   
   - else
-    = fields_for :blocks, nil, :builder => ComfortableMexicanSofa::FormBuilder do |cms_blocks|
+    = fields_for :blocks, nil, :builder => ComfyPress::FormBuilder do |cms_blocks|
       
       .tabbable
         - if namespace.size > 1

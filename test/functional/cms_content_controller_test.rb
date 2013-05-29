@@ -98,7 +98,7 @@ class CmsContentControllerTest < ActionController::TestCase
   end
   
   def test_render_page_with_irb_disabled
-    assert_equal false, ComfortableMexicanSofa.config.allow_irb
+    assert_equal false, ComfyPress.config.allow_irb
     
     irb_page = cms_sites(:default).pages.create!(
       :label          => 'irb',
@@ -117,7 +117,7 @@ class CmsContentControllerTest < ActionController::TestCase
   end
   
   def test_render_page_with_irb_enabled
-    ComfortableMexicanSofa.config.allow_irb = true
+    ComfyPress.config.allow_irb = true
     
     irb_page = cms_sites(:default).pages.create!(
       :label          => 'irb',
@@ -196,7 +196,7 @@ class CmsContentControllerTest < ActionController::TestCase
   end
 
   def test_rendering_sitemap_with_extensions
-    ComfortableMexicanSofa::Sitemap.register_extension(TestRenderException.method(:callback))
+    ComfyPress::Sitemap.register_extension(TestRenderException.method(:callback))
     get :render_sitemap, :format => :xml
     assert_response :success
     assert_match '<loc>http://test.host/test_render</loc>', response.body
