@@ -31,6 +31,9 @@ module ComfortableMexicanSofa::Routing
             end
           end
           resources :categories
+          resources :slides do
+            put :reorder, :on => :collection
+          end
           get 'dialog/:type' => 'dialogs#show', :as => 'dialog'
         end
       end

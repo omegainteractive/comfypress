@@ -1,0 +1,9 @@
+= form.file_field :file, :multiple => @slide.new_record?
+
+- unless @slide.new_record?
+  = form.element t('.current_slide') do
+    = image_tag @slide.file.url if @slide.is_image?
+    = link_to @slide.file.url, @slide.file.url, :target => '_blank'
+
+.form-actions
+  = form.submit t(@slide.new_record?? '.create' : '.update'), :class => 'btn btn-primary'

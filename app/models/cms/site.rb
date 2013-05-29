@@ -18,6 +18,7 @@ class Cms::Site < ActiveRecord::Base
     site.has_many :snippets
     site.has_many :files
     site.has_many :categories
+    site.has_many :slides
   end
   
   # -- Callbacks ------------------------------------------------------------

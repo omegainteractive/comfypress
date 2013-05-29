@@ -1,0 +1,13 @@
+- type ||= nil
+
+.box.file-uploader
+  = form_for :file, :url => cms_admin_site_slides_path(@site, :ajax => true), :html => {:multipart => true, :target => 'file-upload-frame'} do |form|
+    %span.btn.btn-file
+      = t('.button')
+      = form.file_field :file, :multiple => true, :id => nil
+  
+  .uploaded-files
+    - @site.slides.order(:label).each do |slide|
+      = render :partial => 'cms_admin/slide/slide', :object => slide
+      
+  %iframe#file-upload-frame{:name => 'file-upload-frame', :src => ''}

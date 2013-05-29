@@ -1,0 +1,11 @@
+- slides = Cms::Site.find(session[:site_id]).slides
+
+
+%section.carousel
+  %ul.carousel-images
+    - slides.each do |slide|
+      %li= image_tag slide.file.url
+  %ul.carousel-controls
+    - slides.each do |slide|
+      %li
+        %a{:href => "#"}
