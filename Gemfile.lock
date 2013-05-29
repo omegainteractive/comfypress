@@ -11,6 +11,7 @@ PATH
       rails (>= 3.1.0)
       redcarpet (>= 2.2.0)
       sass-rails (>= 3.1.0)
+      seedbank
 
 GEM
   remote: http://rubygems.org/

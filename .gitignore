@@ -13,3 +13,4 @@ public/*
 .ruby-version
 /.sass-cache
 /coverage
+*.gem
