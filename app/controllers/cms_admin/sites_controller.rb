@@ -5,6 +5,7 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
 
   before_filter :build_site,  :only => [:new, :create]
   before_filter :load_site,   :only => [:edit, :update, :destroy]
+  before_filter :build_logo,  :only => [:new, :edit]
 
   def index
     return redirect_to :action => :new if Cms::Site.count == 0
@@ -22,6 +23,7 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
 
   def create
     @site.save!
+    upload_logo
     flash[:success] = I18n.t('cms.sites.created')
     redirect_to cms_admin_site_layouts_path(@site)
   rescue ActiveRecord::RecordInvalid
@@ -31,6 +33,7 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
   end
 
   def update
+    upload_logo
     @site.update_attributes!(params[:site])
     flash[:success] = I18n.t('cms.sites.updated')
     redirect_to :action => :edit, :id => @site
@@ -47,6 +50,18 @@ class CmsAdmin::SitesController < CmsAdmin::BaseController
   end
 
 protected
+
+  def build_logo
+    @site.build_logo unless @site.logo
+  end
+
+  def upload_logo
+    if logo_file = params[:site][:logo_file]
+      file = Cms::File.create!({file: logo_file, site_id: @site.id})
+      @site.logo_id = file.id
+      @site.save!
+    end
+  end
 
   def build_site
     @site = Cms::Site.new(params[:site])

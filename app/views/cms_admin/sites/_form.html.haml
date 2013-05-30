@@ -2,12 +2,15 @@
 = form.text_field :identifier, :data => {:slug => true}
 = form.text_field :hostname
 = form.text_field :path
+= form.file_field :logo_file
+- unless @site.logo.new_record?
+  = form.element t('.current_logo') do
+    = link_to @site.logo.file.url, :target => '_blank' do
+      = image_tag @site.logo.file.url if @site.logo.is_image?
 = form.select :locale, ComfyPress.config.locales.to_a.collect{|l| [l[1], l[0]]}
 = form.check_box :is_mirrored, :label => t('.is_mirrored')
-
 - if (options = Cms::Menu.options_for_select(@site)).present?
   = form.select :menu_id, options, {:prompt => "Select menu"}
-   
 
 .form-actions
   = form.submit t(@site.new_record?? '.create' : '.update'), :class => 'btn btn-primary'

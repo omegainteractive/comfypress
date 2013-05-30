@@ -6,7 +6,9 @@
   - @sites.each do |site|
     %tr
       %td
-        .icon
+        - if site.logo.try(:is_image?)
+          - icon_style = "background: url('#{site.logo.file.url(:cms_thumb)}') no-repeat center"
+        .icon{:style => (icon_style if icon_style)}
       %td.main
         .item-title
           = link_to site.label, cms_admin_site_pages_path(site)

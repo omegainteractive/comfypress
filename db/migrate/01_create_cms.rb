@@ -18,6 +18,7 @@ class CreateCms < ActiveRecord::Migration
       t.string :locale,       :null => false, :default => 'en'
       t.boolean :is_mirrored, :null => false, :default => false
       t.integer :menu_id
+      t.integer :logo_id
     end
     add_index :cms_sites, :hostname
     add_index :cms_sites, :is_mirrored

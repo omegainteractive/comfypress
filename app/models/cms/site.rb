@@ -4,13 +4,16 @@ class Cms::Site < ActiveRecord::Base
   
   self.table_name = 'cms_sites'
   
+  attr_accessor   :logo_file
   attr_accessible :identifier,
                   :label,
                   :hostname,
                   :path,
                   :locale,
                   :is_mirrored,
-                  :menu_id
+                  :menu_id,
+                  :logo_id,
+                  :logo_file
   
   # -- Relationships --------------------------------------------------------
   with_options :dependent => :destroy do |site|
@@ -24,6 +27,8 @@ class Cms::Site < ActiveRecord::Base
     site.has_many :slides
     site.has_many :tabs
   end
+
+  belongs_to :logo, class_name: Cms::File
   
   # -- Callbacks ------------------------------------------------------------
   before_validation :assign_identifier,

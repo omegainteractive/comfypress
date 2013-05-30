@@ -189,6 +189,7 @@ en:
         create: Create Site
         update: Update Site
         is_mirrored: Mirrored
+        current_logo: Current Logo
         
     layouts:
       index:

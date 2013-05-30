@@ -33,6 +33,7 @@ class Cms::File < ActiveRecord::Base
   
   # -- Relationships --------------------------------------------------------
   belongs_to :site
+  has_one :site_logo, class_name: Cms::Site, foreign_key: 'logo_id'
   belongs_to :block
   
   # -- Validations ----------------------------------------------------------
