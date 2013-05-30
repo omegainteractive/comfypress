@@ -44,7 +44,7 @@ module ComfyPress::Tag
         
         tag = self.new
         tag.page        = page
-        tag.identifier  = match[1]
+        tag.identifier  = match[1] || ''
         tag.namespace   = (ns = tag.identifier.split('.')[0...-1].join('.')).blank?? nil : ns
         tag.params      = params
         tag
