@@ -38,7 +38,7 @@ module ComfyPress::Routing
           end
           resources :tabs
           get 'dialog/:type' => 'dialogs#show', :as => 'dialog'
-        end
+        end   #sites
       end
     end
   end
