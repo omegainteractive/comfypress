@@ -21,6 +21,7 @@ class Cms::Site < ActiveRecord::Base
     site.has_many :categories
     site.has_many :menus
     site.has_many :menu_items, :through => :menus
+    site.has_many :tabs
   end
   
   # -- Callbacks ------------------------------------------------------------

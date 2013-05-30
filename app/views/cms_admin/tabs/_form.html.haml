@@ -1,0 +1,8 @@
+- content_for :right_column do
+  = render :partial => 'cms_admin/files/index'
+
+= form.text_field :label
+= form.text_area :content, :data => {'rich-text' => 'text/html'}
+
+.form-actions
+  = form.submit t(@tab.new_record?? '.create' : '.update'), :class => 'btn btn-primary'

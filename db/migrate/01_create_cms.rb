@@ -143,9 +143,16 @@ class CreateCms < ActiveRecord::Migration
         t.timestamps
       end
 
+    # -- Tabs --------------------------------------------------------------
+      create_table :cms_tabs do |t|
+        t.integer :site_id
+        t.string :label
+        t.text   :content,     text_limit
 
+        t.timestamps
+      end
   end
-  
+
   def self.down
     drop_table :cms_sites
     drop_table :cms_layouts
@@ -158,6 +165,7 @@ class CreateCms < ActiveRecord::Migration
     drop_table :cms_categorizations
     drop_table :cms_menus
     drop_table :cms_menu_items  
+    drop_table :cms_tabs
   end
 end
 

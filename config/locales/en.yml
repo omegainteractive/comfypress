@@ -14,6 +14,7 @@ en:
       cms/page: Page
       cms/snippet: Snippet
       cms/file: File
+      cms/tab: Tab
     attributes:
       cms/site:
         identifier: Identifier
@@ -94,6 +95,13 @@ en:
       update_failure: Failed to update snippet
       deleted: Snippet deleted
       not_found: Snippet not found
+    tabs:
+      created: Tab created
+      creation_failure: Failed to create tab
+      updated: Tab updated
+      update_failure: Failed to update tab
+      deleted: Tab deleted
+      not_found: Tab not found
       
     revisions:
       reverted: Content Reverted
@@ -121,6 +129,7 @@ en:
       pages: Pages
       snippets: Snippets
       files: Files
+      tabs: Tabs
 
     menus:
       index:
@@ -233,7 +242,21 @@ en:
       form:
         create: Create Snippet
         update: Update Snippet
-          
+    tabs:
+      index:
+        title: Tabs
+        new_link: Create New Tab
+        edit: Edit
+        delete: Delete
+        are_you_sure: Are you sure?
+      new:
+        title: New Tab
+      edit:
+        title: Editing Tab
+        revision: Revision
+      form:
+        create: Create Tab
+        update: Update Tab
     revisions:
       show:
         title: Revisions for

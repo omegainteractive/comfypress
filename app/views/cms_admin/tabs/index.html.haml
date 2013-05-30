@@ -1,0 +1,15 @@
+.page-header
+  = link_to t('.new_link'), new_cms_admin_site_tab_path(@site), :class => 'btn pull-right'
+  %h2= t('.title')
+
+%table.table.table-hover.table-bordered
+  %tbody.sortable
+    - @tabs.each do |tab|
+      %tr{:id => dom_id(tab)}
+        %td.main
+          .item-title
+            = link_to tab.label, edit_cms_admin_site_tab_path(@site, tab)
+        %td
+          .btn-group
+            = link_to t('.edit'), edit_cms_admin_site_tab_path(@site, tab), :class => 'btn btn-small'
+            = link_to t('.delete'), cms_admin_site_tab_path(@site, tab), :method => :delete, :data => {:confirm => t('.are_you_sure')}, :class => 'btn btn-small btn-danger'

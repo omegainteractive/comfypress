@@ -34,6 +34,7 @@ module ComfortableMexicanSofa::Routing
           resources :menus do
             resources :menu_items
           end
+          resources :tabs
           get 'dialog/:type' => 'dialogs#show', :as => 'dialog'
         end
       end
