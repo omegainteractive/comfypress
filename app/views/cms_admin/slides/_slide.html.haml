@@ -1,0 +1,13 @@
+.file{:class => "#{dom_id(slide)} #{slide.is_image?? 'image' : nil}"}
+  .file-name
+    = link_to cms_admin_site_file_path(@site, slide), :method => :delete, :remote => true, :data => {:confirm => t('.are_you_sure')}, :class => 'delete' do
+      %i.icon-remove-circle
+    = link_to slide.file_file_name, slide.file.url, :target => '_blank', :class => 'filename'
+  
+  .file-info{:data => {:url => slide.file.url}}
+    .thumb
+      = image_tag slide.file.url(:cms_thumb) if slide.is_image?
+    .details
+      %input{:type => 'text', :value => slide.file.url}
+      .file-type= slide.file_content_type
+      .file-size= number_to_human_size(slide.file_file_size, :locale => :en)

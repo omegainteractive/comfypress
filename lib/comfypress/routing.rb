@@ -33,6 +33,8 @@ module ComfyPress::Routing
           resources :categories
           resources :menus do
             resources :menu_items
+          resources :slides do
+            put :reorder, :on => :collection
           end
           get 'dialog/:type' => 'dialogs#show', :as => 'dialog'
         end

@@ -1,0 +1,21 @@
+.page-header
+  = link_to t('.new_link'), new_cms_admin_site_slide_path(@site), :class => 'btn pull-right'
+  %h2= t('.title')
+
+%table.table.table-hover.table-bordered
+  %tbody.sortable
+    - @slides.each do |slide|
+      %tr{:id => dom_id(slide)}
+        %td
+          - if slide.is_image?
+            - icon_style = "background: url('#{slide.file.url(:cms_thumb)}') no-repeat center"
+            .icon{:style => icon_style}
+        %td.main
+          .item-title
+            = link_to slide.file_file_name, edit_cms_admin_site_slide_path(@site, slide)
+          .item-meta
+            = link_to slide.file_file_name, slide.file.url, :target => '_blank'
+        %td
+          .btn-group
+            = link_to t('.edit'), edit_cms_admin_site_slide_path(@site, slide), :class => 'btn btn-small'
+            = link_to t('.delete'), cms_admin_site_slide_path(@site, slide), :method => :delete, :data => {:confirm => t('.are_you_sure')}, :class => 'btn btn-small btn-danger'

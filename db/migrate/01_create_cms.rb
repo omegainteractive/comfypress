@@ -144,8 +144,18 @@ class CreateCms < ActiveRecord::Migration
       end
 
 
+
+    # -- Carousel ---------------------------------------------------------
+    create_table :cms_slides do |t|
+      t.integer :site_id,          :null => false
+      t.string  :file_file_name,    :null => false
+      t.string  :file_content_type, :null => false
+      t.integer :file_file_size,    :null => false
+      t.integer :position,          :null => false, :default => 0
+      t.timestamps
+    end
   end
-  
+
   def self.down
     drop_table :cms_sites
     drop_table :cms_layouts
@@ -158,6 +168,7 @@ class CreateCms < ActiveRecord::Migration
     drop_table :cms_categorizations
     drop_table :cms_menus
     drop_table :cms_menu_items  
+    drop_table :cms_slides
   end
 end
 

@@ -107,6 +107,13 @@ en:
       update_failure: Failed to update file
       deleted: File deleted
       not_found: File not found
+    slides:
+      created: Slide uploaded
+      creation_failure: Failed to upload slide
+      updated: Slide updated
+      update_failure: Failed to update slide
+      deleted: Slide deleted
+      not_found: Slide not found
       
     content:
       site_not_found: Site Not Found
@@ -155,6 +162,8 @@ en:
         create: Create Menu Item
         update: Update Menu Item
 
+      carousel: Carousel
+      
     sites:
       index:
         title: Sites
@@ -259,6 +268,26 @@ en:
         current_file: Current File
         create: Upload File
         update: Update File
+      page_form:
+        are_you_sure: Are you sure?
+      file:
+        are_you_sure: Are you sure?
+    slides:
+      index:
+        title: Slides
+        new_link: Upload New Slide
+        edit: Edit
+        delete: Delete
+        are_you_sure: Are you sure?
+        button: Upload Slides
+      new:
+        title: New Slide
+      edit:
+        title: Editing Slide
+      form:
+        current_slide: Current Slide
+        create: Upload Slide
+        update: Update Slide
       page_form:
         are_you_sure: Are you sure?
       file:
