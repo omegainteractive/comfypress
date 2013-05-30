@@ -33,6 +33,7 @@ module ComfyPress::Routing
           resources :categories
           resources :menus do
             resources :menu_items
+          end
           resources :slides do
             put :reorder, :on => :collection
           end
@@ -61,5 +62,4 @@ module ComfyPress::Routing
       end
     end
   end
-end
 end

@@ -148,6 +148,7 @@ class CreateCms < ActiveRecord::Migration
         t.integer :site_id
         t.string :label
         t.text   :content,     text_limit
+      end
 
 
     # -- Carousel ---------------------------------------------------------

@@ -11,7 +11,7 @@ class ComfyPress::Tag::Carousel
   end
 
   def render
-    whitelist = Comfypress.config.allowed_partials
+    whitelist = ComfyPress.config.allowed_partials
     if whitelist.is_a?(Array)
       content if whitelist.member?(identifier)
     else

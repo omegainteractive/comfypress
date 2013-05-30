@@ -2,7 +2,7 @@ class Cms::Slide < ActiveRecord::Base
 
   IMAGE_MIMETYPES = %w(gif jpeg pjpeg png svg+xml tiff).collect{|subtype| "image/#{subtype}"}
 
-  ComfortableMexicanSofa.establish_connection(self)
+  ComfyPress.establish_connection(self)
 
   self.table_name = 'cms_slides'
 
@@ -24,7 +24,7 @@ class Cms::Slide < ActiveRecord::Base
   before_create :assign_position
 
   # -- AR Extensions --------------------------------------------------------
-  has_attached_file :file, ComfortableMexicanSofa.config.upload_file_options.merge(
+  has_attached_file :file, ComfyPress.config.upload_file_options.merge(
     # dimensions accessor needs to be set before file assignment for this to work
     :styles => lambda { |f|
       if f.respond_to?(:instance) && f.instance.respond_to?(:dimensions)
