@@ -1,0 +1,6 @@
+- site = Cms::Site.find(session[:site_id])
+
+- if site.logo
+  - host = "http://#{site.hostname}/#{site.path}"
+  = link_to host do
+    = image_tag site.logo.file.url
