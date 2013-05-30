@@ -143,6 +143,11 @@ class CreateCms < ActiveRecord::Migration
         t.timestamps
       end
 
+    # -- Tabs --------------------------------------------------------------
+      create_table :cms_tabs do |t|
+        t.integer :site_id
+        t.string :label
+        t.text   :content,     text_limit
 
 
     # -- Carousel ---------------------------------------------------------
@@ -154,7 +159,7 @@ class CreateCms < ActiveRecord::Migration
       t.integer :position,          :null => false, :default => 0
       t.timestamps
     end
-  end
+ end
 
   def self.down
     drop_table :cms_sites
@@ -169,6 +174,7 @@ class CreateCms < ActiveRecord::Migration
     drop_table :cms_menus
     drop_table :cms_menu_items  
     drop_table :cms_slides
+    drop_table :cms_tabs
   end
 end
 

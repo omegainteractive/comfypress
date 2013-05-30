@@ -1,0 +1,13 @@
+- tabs = Cms::Site.find(session[:site_id]).tabs
+
+
+%h1 Tabs
+%section.carousel
+  %ul.carousel-images
+    %h2 Tab labels
+    - tabs.each do |tab|
+      %li= tab.label
+  %ul.carousel-controls
+    %h2 Tab Content
+    - tabs.each do |tab|
+      %li= tab.content

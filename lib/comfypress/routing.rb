@@ -36,6 +36,7 @@ module ComfyPress::Routing
           resources :slides do
             put :reorder, :on => :collection
           end
+          resources :tabs
           get 'dialog/:type' => 'dialogs#show', :as => 'dialog'
         end
       end
