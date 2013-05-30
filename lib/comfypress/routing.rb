@@ -61,5 +61,5 @@ module ComfyPress::Routing
       end
     end
   end
-  
+end
 end
